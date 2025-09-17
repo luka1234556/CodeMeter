@@ -20,6 +20,7 @@ import { FaInstagram, FaThreads, FaTiktok, FaYoutube, FaAngleRight,
 FaAngleLeft, FaAngleDown, FaHashtag } from "react-icons/fa6";
 import { TbBrandJavascript } from "react-icons/tb";
 import { AiFillFire } from "react-icons/ai";
+import { GiDrippingHoney, GiHoneycomb } from "react-icons/gi";
 
 function Javascript() {
   const languages = {
@@ -83,32 +84,32 @@ function Javascript() {
     { 
       label: `${t("quizLevels.level1")}`, min: 0, 
       color: "bg-gradient-to-b from-[#cd7f32] to-[#b87333] text-orange-200 border-2 border-orange-200", 
-      icon: <img src="/level_1.png" alt="Level-1"></img>, 
+      icon: <img src="level_1.png" alt="Level-1"></img>, 
     },
     { 
       label: `${t("quizLevels.level2")}`, min: 25, 
       color: "bg-gradient-to-br from-[#c0c0c0] to-[#a9a9a9] text-slate-200 border-2 border-slate-100", 
-      icon: <img src="/level_2.png" alt="Level-2"></img>, 
+      icon: <img src="level_2.png" alt="Level-2"></img>, 
     },
     { 
       label: `${t("quizLevels.level3")}`, min: 50, 
       color: "bg-gradient-to-b from-[#e6e8fa] to-[#c0c0c0] text-gray-800 border-2 border-gray-700", 
-      icon: <img src="/level_3.png" alt="Level-3"></img>, 
+      icon: <img src="level_3.png" alt="Level-3"></img>, 
     },
     { 
       label: `${t("quizLevels.level4")}`, min: 65, 
       color: "bg-gradient-to-b from-[#50c878] to-[#2e8b57] text-emerald-300 border-2 border-emerald-100", 
-      icon: <img src="/level_4.png" alt="Level-4"></img>, 
+      icon: <img src="level_4.png" alt="Level-4"></img>, 
     },
     { 
       label: `${t("quizLevels.level5")}`, min: 80, 
       color: "bg-gradient-to-b from-[#ff4f4f] to-[#d40000] text-rose-200 border-2 border-rose-100", 
-      icon: <img src="/level_5.png" alt="Level-5"></img>, 
+      icon: <img src="level_5.png" alt="Level-5"></img>, 
     },
     { 
       label: `${t("quizLevels.level6")}`, min: 90, 
       color: "bg-gradient-to-b from-[#ffd700] to-[#e6c200] text-yellow-900 border-2 border-yellow-100", 
-      icon: <img src="/level_6.png" alt="Level-6"></img>, 
+      icon: <img src="level_6.png" alt="Level-6"></img>, 
     },
   ];
   const correctCount = Object.values(userAnswers).filter((a) => a.isCorrect).length;
@@ -295,8 +296,9 @@ function Javascript() {
   
   return (
     <div 
-    className="min-h-screen flex flex-col js text-yellow-100">
-
+    className="min-h-screen flex flex-col relative from-yellow-500/70 to-amber-400
+    bg-gradient-to-b md:from-yellow-500/90 md:to-amber-500/90">
+      
       <Header showBackButton={true} theme="javascript" />
 
       <SideNav
@@ -308,21 +310,142 @@ function Javascript() {
       ]}
       />
 
+      <div className="md:block hidden">
+        <GiDrippingHoney 
+        style={{ 
+          color: "#ffea4f",
+          position: "absolute", 
+          top: "2%", 
+          left: "0%", 
+          fontSize: "18rem" 
+        }} 
+        />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#fae234",
+          position: "absolute", 
+          top: "4%", 
+          left: "70%", 
+          fontSize: "17rem" 
+        }} 
+        />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#f5d65b",
+          position: "absolute", 
+          top: "20%", 
+          left: "1%", 
+          fontSize: "20rem" 
+        }} 
+        />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#ffea4f",
+          position: "absolute", 
+          top: "28%", 
+          right: "0%", 
+          fontSize: "16rem" 
+        }} 
+        />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#f5d65b",
+          position: "absolute", 
+          top: "12%", 
+          right: "-3%", 
+          fontSize: "14rem" 
+        }} />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#fae234",
+          position: "absolute", 
+          top: "35%", 
+          left: "0%", 
+          fontSize: "16rem" 
+        }} 
+        />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#f5d65b",
+          position: "absolute", 
+          top: "42%", 
+          right: "20%", 
+          fontSize: "18rem" 
+        }} />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#ffea4f",
+          position: "absolute", 
+          top: "50%", 
+          left: "1%", 
+          fontSize: "20rem" 
+        }} />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#fae234",
+          position: "absolute", 
+          top: "50%", 
+          right: "0%", 
+          fontSize: "22rem" 
+        }} />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#ffea4f",
+          position: "absolute", 
+          top: "60%", 
+          left: "33%", 
+          fontSize: "18rem" 
+        }} />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#ffea4f",
+          position: "absolute", 
+          top: "65%", 
+          right: "1%", 
+          fontSize: "20rem" 
+        }} />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#ffea4f",
+          position: "absolute", 
+          top: "72%", 
+          left: "1%", 
+          fontSize: "20rem" 
+        }} />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#f5d65b",
+          position: "absolute", 
+          top: "78%", 
+          right: "1%", 
+          fontSize: "20rem" 
+        }} />
+        <GiDrippingHoney 
+        style={{ 
+          color: "#fae234",
+          position: "absolute", 
+          top: "82%", 
+          left: "40%", 
+          fontSize: "20rem" 
+        }} />
+      </div>
+
       <main 
       role="main"
       aria-label="Custom Logic Quiz"
       className="flex flex-col items-center w-full sm:max-w-full max-w-screen-md 
       mx-auto sm:px-6 gap-8 mt-2 mb-10">
-      
+        
         <div 
-        className="flex items-center flex-col">
+        className="flex items-center flex-col z-1">
           <h1 
           className={`md:text-5xl font-extrabold text-center mt-5 flex items-center 
-          gap-1 group text-transparent bg-clip-text bg-gradient-to-tr from-yellow-600 via-yellow-500 to-amber-500
-          text-[2rem]`}>
+          gap-1 group text-transparent bg-clip-text bg-gradient-to-tr pb-2 
+          md:from-yellow-300 md:to-amber-300 text-[2rem]
+          from-yellow-600 to-amber-400`}>
             {t("main.header3")}
             <TbBrandJavascript 
-            className="md:text-6xl text-4xl mt-1 text-amber-500" />
+            className="md:text-6xl text-4xl mt-1 md:text-amber-200 text-amber-500" />
           </h1>
 
           <p 
@@ -340,51 +463,66 @@ function Javascript() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="w-full max-w-6xl mx-auto px-2 sm:px-6 lg:px-10 bg-yellow-200
+        className="w-full max-w-6xl mx-auto px-2 sm:px-6 lg:px-10
         backdrop-blur-md border border-yellow-500 rounded-2xl 
         shadow-lg py-4 md:py-10 lg:py-12 md:max-h-[43rem] lg:max-h-[40rem]
-        flex flex-col justify-between min-h-[37rem] md:min-h-[40rem]"
+        flex flex-col justify-between min-h-[37rem] md:min-h-[40rem]
+        bg-gradient-to-b from-yellow-400 to-yellow-600"
         >
           {showExplanation && (
-            <div
-            className="fixed inset-0 bg-yellow-800/50 rounded-2xl backdrop-blur-sm 
-            flex items-center justify-center z-30 overflow-x-hidden"
+            <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b 
+            from-yellow-900/50 to-yellow-800/50 backdrop-blur-sm rounded-2xl"
             onClick={() => setShowExplanation(false)}
             >
-              <div
-              className="bg-gradient-to-br from-yellow-500 via-[#ffb300] to-[#ffcc12] 
-              border-2 border-yellow-300 rounded-2xl px-4 sm:px-6 py-6 max-w-2xl w-full relative shadow-2xl"
+              <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 50, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
+              className="relative w-full h-full md:h-auto md:max-h-[80vh] max-w-4xl
+              bg-gradient-to-br from-yellow-500 via-[#ffb300] to-[#ffcc12]
+              border-2 border-yellow-400 rounded-3xl shadow-2xl p-6 md:p-10 flex flex-col overflow-y-auto"
               >
-                {/* Outer glow frame */}
-                <span 
-                  className="absolute -inset-5 z-10 rounded-2xl border-3 
-                  border-yellow-400 shadow-lg pointer-events-none"
+                {/* Neon Glow Effect */}
+                <div className="absolute inset-0 rounded-3xl border-4 border-yellow-400 opacity-20 shadow-[0_0_50px_rgba(255,255,0,0.4)] pointer-events-none"></div>
+
+                {/* Close Button */}
+                <IoClose
+                  onClick={() => setShowExplanation(false)}
+                  className="absolute right-6 top-6 text-3xl text-yellow-100 hover:text-white hover:scale-110 transition-transform cursor-pointer z-20"
                 />
 
-                {/* Close button */}
-                <IoClose 
-                onClick={() => setShowExplanation(false)}
-                className="absolute right-3 top-3 text-2xl cursor-pointer text-yellow-100 
-                hover:text-yellow-50 hover:scale-110 transition-transform"
-                />
-
-                {/* Title */}
-                <h2 
-                className="text-2xl font-bold text-yellow-100 mb-4 text-center flex items-center 
-                gap-2 border-b border-yellow-200 pb-2"
-                >
-                  <LuBrainCircuit className="text-2xl" /> 
+                {/* Header */}
+                <h2 className="text-3xl md:text-4xl font-extrabold text-yellow-100 mb-6 flex items-center justify-center gap-3 border-b border-yellow-300 pb-3">
+                  <LuBrainCircuit className="text-3xl md:text-4xl animate-pulse text-yellow-200" />
                   {t("main.explanation")}
                 </h2>
 
-                {/* Body text */}
-                <p className="text-yellow-50 font-medium leading-relaxed mb-4">
-                  {explanation}
-                </p>
+                {/* Body */}
+                <div
+                className={`flex-1 text-yellow-100 font-medium leading-relaxed
+                ${i18n.language === "ka" ? "text-[0.9rem] md:text-[1.1rem]" : "text-base md:text-[1.2rem]"}`}
+                >
+                  <p>{explanation}</p>
+                </div>
 
-              </div>
-            </div>
+                {/* Footer / Action */}
+                <div className="mt-6 flex justify-center">
+                  <button
+                  onClick={() => setShowExplanation(false)}
+                  className="px-8 py-3 bg-gradient-to-br from-yellow-300 to-yellow-400 
+                  text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
           )}
 
           {menu && (
@@ -733,20 +871,20 @@ function Javascript() {
                       components={{
                         easy: (
                           <FaLeaf
-                            size={20}
-                            className="text-green-200 hover:animate-bounce"
+                          size={20}
+                          className="text-green-200 hover:animate-bounce"
                           />
                         ),
                         medium: (
                           <FaCog
-                            size={20}
-                            className="text-cyan-100 hover:animate-spin"
+                          size={20}
+                          className="text-cyan-100 hover:animate-spin"
                           />
                         ),
                         hard: (
                           <AiFillFire
-                            size={22}
-                            className="text-yellow-200 hover:scale-125 transition-transform duration-200 hover:text-white"
+                          size={22}
+                          className="text-yellow-200 hover:scale-125 transition-transform duration-200 hover:text-white"
                           />
                         ),
                       }}
@@ -765,17 +903,16 @@ function Javascript() {
                 {/* Left side: Score */}
                 <div
                 className="flex items-center justify-center px-3 py-1 text-[1.05rem]
-                border-2 rounded-full border-yellow-100 bg-yellow-100/30"
+                border-2 rounded-full border-yellow-100 bg-yellow-100/30 
+                font-mono"
                 >
                 <p 
-                className="font-mono tracking-wide pr-1 text-transparent bg-clip-text
-                bg-gradient-to-b from-yellow-300 to-yellow-900 text-[0.9rem]">
+                className=" pr-1">
                   {t("score")} 
                 </p>
                 
                 <span 
-                className="font-mono text-transparent bg-clip-text text-[1rem]
-                bg-gradient-to-b from-yellow-300 to-yellow-900">
+                className="">
                   {score}
                 </span>
               </div>
@@ -914,8 +1051,9 @@ function Javascript() {
           
           {/*Flex col-2 */}
           <div
-          className="flex flex-wrap sm:justify-center md:justify-center gap-2 mt-2
-          rounded-2xl border border-amber-400/80 bg-yellow-900/30 backdrop-blur-xl shadow-lg px-4 py-3"
+          className="flex flex-wrap sm:justify-center md:justify-center mt-2
+          rounded-2xl border border-amber-400/80 bg-yellow-900/30 backdrop-blur-xl shadow-lg 
+          py-2 gap-4"
           >
             {/* Left side: Question ID */}
             <div className="hidden md:flex items-center text-yellow-100 gap-2 font-mono">
@@ -991,7 +1129,7 @@ function Javascript() {
                     key={button.id}
                     onClick={button.click}
                     disabled={button.disabled}
-                    className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-xl font-medium
+                    className={`hidden md:flex items-center gap-2 px-4 py-3 rounded-xl font-medium
                     transition-all duration-200 cursor-pointer
                      ${i18n.language === "ka" ? "md:text-[1rem] lg:text-[1.2rem]" : "md:text-[1.1rem] lg:text-[1.3rem]"}
                     ${
@@ -1010,8 +1148,8 @@ function Javascript() {
                   key={button.id}
                   onClick={button.click}
                   disabled={button.disabled}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium
-                  transition-all duration-200 cursor-pointer sm:px-2
+                  className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium
+                  transition-all duration-200 cursor-pointer sm:px-2 md:px-6
                   ${i18n.language === "ka" 
                     ? "text-[0.9rem] md:text-[1rem] lg:text-[1.2rem]" 
                     : "text-[1rem] md:text-[1.1rem] lg:text-[1.3rem]"}
@@ -1053,7 +1191,7 @@ function Javascript() {
                       <div className={`
                        ${i18n.language === "ka" 
                         ? "md:text-[1rem] lg:text-[1.2rem]" 
-                        : "md:text-[1.1rem] lg:text-[1.3rem]"}`}>
+                        : "md:text-[1.1rem] lg:text-[1.3rem] px-2"}`}>
                         <span className="sm:hidden">
                           {button.text}
                         </span>
@@ -1073,15 +1211,18 @@ function Javascript() {
 
         <section 
         id="jsList"
-        className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-10 bg-yellow-200 
+        className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-10
         backdrop-blur-md border border-yellow-500 rounded-2xl shadow-lg p-6
-        my-[1rem] md:my-[5rem] md:min-h-[40rem]"
+        my-[1rem] md:my-[5rem] md:min-h-[40rem]
+        bg-gradient-to-b from-yellow-400 to-yellow-600"
         >
           <h1
-          className={`bg-gradient-to-b text-white py-3 px-5 rounded-xl hover:bg-yellow-700 transition
-          flex items-center gap-1 from-amber-500 to-yellow-600 shadow-lg
-          font-bold  mb-7 md:mb-10
-          ${i18n.language === "ka" ? "text-[1.1rem] md:text-[1.7rem]" : "text-[1.1rem] md:text-[1.7rem]"}`}
+          className={`text-white py-3 px-5 rounded-xl hover:bg-yellow-700 transition
+          flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-amber-500 shadow-lg
+          font-bold mb-7 md:mb-10
+          ${i18n.language === "ka" 
+            ? "text-[1.1rem] md:text-[1.5rem]" 
+            : "text-[1.1rem] md:text-[1.7rem]"}`}
           >
             <CiBoxList 
             className={`text-2xl md:text-4xl `} />
@@ -1090,7 +1231,7 @@ function Javascript() {
 
           <ul
           className="grid grid-cols-3 md:grid-cols-4 gap-3 
-        text-sky-900 mt-5 overflow-y-auto max-h-[29rem] 
+          mt-5 overflow-y-auto max-h-[29rem] bg-gradient-to-b from-yellow-200 to-yellow-300
           p-2 pr-3 relative"
           >
             {jsQuestions.map((q) => (
@@ -1107,7 +1248,9 @@ function Javascript() {
               key={q.id}
               >
                 <FaHashtag className="text-base opacity-80 md:text-xl" />
-                <span className="font-mono text-xl md:text-3xl">{q.id}</span>
+                <span className="font-mono text-xl md:text-3xl">
+                  {q.id}
+                </span>
               </li>
             ))}
           </ul>
@@ -1183,14 +1326,14 @@ function Javascript() {
 
         <section
         id="jsVideo"
-        className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-10 
-        bg-white/10 backdrop-blur-md border border-yellow-500 rounded-2xl shadow-lg 
-        py-6 my-[1rem]"
+        className={`w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-10 
+        backdrop-blur-md border border-yellow-500 rounded-2xl shadow-lg 
+        py-6 my-[1rem] bg-gradient-to-b from-yellow-400 to-yellow-600`}
         >
           {/* Section Header */}
           <h1
-          className={`bg-gradient-to-b text-yellow-100 py-3 px-5 rounded-xl hover:bg-yellow-700 transition
-          flex items-center from-amber-500 to-yellow-600 shadow-lg
+          className={`text-yellow-100 py-3 px-5 rounded-xl hover:bg-yellow-700 transition
+          flex items-center shadow-lg bg-gradient-to-r from-yellow-500 to-amber-500
           mb-1 md:mb-2 border-yellow-300 gap-2 font-bold lg:rounded-2xl
           ${i18n.language === "ka" 
             ? "text-[1.1rem] md:text-[1.5rem]" 

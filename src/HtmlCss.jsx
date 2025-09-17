@@ -83,37 +83,37 @@ function HtmlCss() {
     { 
       label: `${t("quizLevels.level1")}`, min: 0, 
       color: "bg-gradient-to-b from-[#cd7f32] to-[#b87333] text-orange-200 border-2 border-orange-200", 
-      icon: <img src="/level_1.png" alt="Level-1"></img>, 
+      icon: <img src="level_1.png" alt="Level-1"></img>, 
     },
 
     { 
       label: `${t("quizLevels.level2")}`, min: 25, 
       color: "bg-gradient-to-br from-[#c0c0c0] to-[#a9a9a9] text-slate-200 border-2 border-slate-100", 
-      icon: <img src="/level_2.png" alt="Level-2"></img>, 
+      icon: <img src="level_2.png" alt="Level-2"></img>, 
     },
 
     { 
       label: `${t("quizLevels.level3")}`, min: 50,
       color: "bg-gradient-to-b from-[#e6e8fa] to-[#c0c0c0] text-gray-800 border-2 border-gray-700", 
-      icon: <img src="/level_3.png" alt="Level-3"></img>, 
+      icon: <img src="level_3.png" alt="Level-3"></img>, 
     },
 
     { 
       label: `${t("quizLevels.level4")}`, min: 65, 
       color: "bg-gradient-to-b from-[#50c878] to-[#2e8b57] text-emerald-300 border-2 border-emerald-100", 
-      icon: <img src="/level_4.png" alt="Level-4"></img>, 
+      icon: <img src="level_4.png" alt="Level-4"></img>, 
     },
 
     { 
       label: `${t("quizLevels.level5")}`, min: 80, 
       color: "bg-gradient-to-b from-[#ff4f4f] to-[#d40000] text-rose-200 border-2 border-rose-100", 
-      icon: <img src="/level_5.png" alt="Level-5"></img>, 
+      icon: <img src="level_5.png" alt="Level-5"></img>, 
     },
     
     { 
       label: `${t("quizLevels.level6")}`, min: 90, 
       color: "bg-gradient-to-b from-[#ffd700] to-[#e6c200] text-yellow-900 border-2 border-yellow-100", 
-      icon: <img src="/level_6.png" alt="Level-6"></img>, 
+      icon: <img src="level_6.png" alt="Level-6"></img>, 
     },
   ];
   const correctCount = Object.values(userAnswers).filter((a) => a.isCorrect).length;
@@ -354,47 +354,60 @@ function HtmlCss() {
           >
             
             {showExplanation && (
-              <div
-              className="fixed inset-0 bg-sky-800/50 rounded-2xl backdrop-blur-sm 
-              flex items-center justify-center z-30 px-1 overflow-x-hidden"
+              <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b 
+              from-sky-900/50 to-sky-900/50 backdrop-blur-sm rounded-2xl"
               onClick={() => setShowExplanation(false)}
               >
-                <div
-                className="bg-gradient-to-br from-sky-800 via-sky-700 to-cyan-800 
-                border-2 border-sky-300 text-sky-100 rounded-2xl px-4 sm:px-6 py-6 
-                max-w-2xl w-full relative shadow-2xl"
+                <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 50, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 onClick={(e) => e.stopPropagation()}
+                className="relative w-full h-full md:h-auto md:max-h-[80vh] max-w-4xl bg-gradient-to-br from-sky-800 via-cyan-800 to-cyan-700
+                border-2 border-cyan-400 rounded-3xl shadow-2xl p-6 md:p-10 flex flex-col overflow-y-auto"
                 >
-                  {/* Outer glow frame */}
-                  <span 
-                  className="absolute -inset-5 z-10 rounded-2xl border-2 
-                  border-sky-400 shadow-lg pointer-events-none"
-                  />
+                  {/* Neon Glow Effect */}
+                  <div className="absolute inset-0 rounded-3xl border-4 border-cyan-400 opacity-20 shadow-[0_0_50px_rgba(0,255,255,0.4)] pointer-events-none"></div>
 
-                  {/* Close button */}
-                  <IoClose 
+                  {/* Close Button */}
+                  <IoClose
                   onClick={() => setShowExplanation(false)}
-                  className="absolute right-3 top-3 text-2xl cursor-pointer text-sky-200 
-                  hover:text-sky-100 hover:scale-110 transition-transform"
+                  className="absolute right-6 top-6 text-3xl text-cyan-200 hover:text-white hover:scale-110 transition-transform cursor-pointer z-20"
                   />
 
-                  {/* Title */}
-                  <h2 
-                  className="text-2xl font-bold text-sky-200 mb-4 text-center flex items-center gap-2 
-                  border-b border-sky-400 pb-2"
-                  >
-                    <LuBrainCircuit className="text-2xl" /> 
+                  {/* Header */}
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-cyan-100 mb-6 flex items-center justify-center gap-3 border-b border-cyan-300 pb-3">
+                    <LuBrainCircuit className="text-3xl md:text-4xl animate-pulse text-cyan-300" />
                     {t("main.explanation")}
                   </h2>
 
-                  {/* Body text */}
-                  <p 
-                  className="text-sky-100 font-medium leading-relaxed mb-4"
-                  >
-                    {explanation}
-                  </p>
-                </div>
-              </div>
+                  {/* Body */}
+                  <div 
+                  className={`flex-1 text-sky-100 font-medium leading-relaxed
+                  ${i18n.language === "ka" ? "text-[0.9rem] md:text-[1.1rem]" : "text-base md:text-[1.2rem]"}`}>
+                    <p>
+                      {explanation}
+                    </p>
+                  </div>
+
+                  {/* Footer / Action */}
+                  <div className="mt-6 flex justify-center">
+                    <button
+                    onClick={() => setShowExplanation(false)}
+                    className="px-8 py-3 bg-gradient-to-r from-sky-500 to-sky-600 
+                    text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 
+                    transition-all duration-200 cursor-pointer"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </motion.div>
+              </motion.div>
             )}
 
             {menu && (
@@ -524,6 +537,7 @@ function HtmlCss() {
                           >
                             {t("main.mostmissed")}
                           </h4>
+
                           {Object.values(userAnswers).filter((a) => a.selected && !a.isCorrect).length > 0 ? (
                             <ul className="flex flex-wrap gap-2">
                               {Object.entries(userAnswers)
@@ -539,7 +553,9 @@ function HtmlCss() {
                                 ))}
                             </ul>
                           ) : (
-                            <p className="text-sky-200 text-sm">{t("main.noincorrectanswers")}</p>
+                            <p className="text-sky-200 text-sm">
+                              {t("main.noincorrectanswers")}
+                            </p>
                           )}
                         </div>
 
@@ -645,7 +661,6 @@ function HtmlCss() {
 
             {/*Flex col-1 */}
             <div>
-
               {/* Progress Bar */}
               <div 
               className="w-full h-3 bg-slate-400 rounded-full overflow-hidden 
@@ -900,8 +915,9 @@ function HtmlCss() {
 
             {/*Flex col-2*/}
             <div
-            className="flex flex-wrap sm:justify-center md:justify-center gap-2 mt-2
-            rounded-2xl border border-sky-400/80 bg-sky-900/30 backdrop-blur-xl shadow-lg px-4 py-3"
+            className="flex flex-wrap sm:justify-center md:justify-center mt-2 gap-4
+            rounded-2xl border border-sky-400/80 bg-sky-900/30 backdrop-blur-xl 
+            shadow-lg py-2"
             >
               {/* Left side: Question ID */}
               <div 
@@ -949,9 +965,11 @@ function HtmlCss() {
                         key={button.id}
                         onClick={button.click}
                         disabled={button.disabled}
-                        className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-xl font-medium
+                        className={`hidden md:flex items-center gap-2 px-4 py-3 rounded-xl font-medium
                         transition-all duration-200 cursor-pointer
-                        ${i18n.language === "ka" ? "md:text-[1rem] lg:text-[1.2rem]" : "md:text-[1.1rem] lg:text-[1.3rem]"}
+                        ${i18n.language === "ka" 
+                          ? "md:text-[1rem] lg:text-[1.2rem]" 
+                          : "md:text-[1.1rem] lg:text-[1.3rem]"}
                         ${
                           button.disabled
                           ? "bg-sky-800/40 text-sky-400 cursor-not-allowed"
@@ -970,8 +988,8 @@ function HtmlCss() {
                     key={button.id}
                     onClick={button.click}
                     disabled={button.disabled}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium
-                    transition-all duration-200 cursor-pointer sm:px-2
+                    className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium
+                    transition-all duration-200 cursor-pointer sm:px-2 md:px-6
                     ${i18n.language === "ka" 
                       ? "text-[0.9rem] md:text-[1rem] lg:text-[1.2rem]" 
                       : "text-[1rem] md:text-[1.1rem] lg:text-[1.3rem]"}
@@ -1056,7 +1074,7 @@ function HtmlCss() {
             <ul
             className="grid grid-cols-3 md:grid-cols-4 gap-3 
           text-sky-900 mt-5 overflow-y-auto max-h-[29rem] 
-            p-2 pr-3 relative"
+            p-2 pr-3 relative bg-gradient-to-b from-sky-200 to-sky-300"
             >
               {htmlcssQuestions.map((q) => (
                 <li

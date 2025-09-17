@@ -4884,16 +4884,16 @@
   },
   "custom": {
     "1": {
-    "question": "In Tailwind CSS, which of the following will create a blend of two colors (red and blue) diagonally?",
-    "options": [
-      "bg-gradient-to-r from-red-500 to-blue-500",
-      "bg-gradient-to-t from-red-500 to-blue-500",
-      "bg-diagonal from-red-500 to-blue-500",
-      "bg-gradient-diagonal from-red-500 to-blue-500"
-    ],
-    "level": "<easy>easy</easy>",
-    "correct": "bg-gradient-to-t from-red-500 to-blue-500",
-    "explanation": "In Tailwind, `to-t` makes a gradient go from bottom to top (diagonal). Other directions are straight lines or invalid."
+      "question": "In Tailwind CSS, which of the following will create a blend of two colors (red and blue) diagonally?",
+      "options": [
+        "bg-gradient-to-r from-red-500 to-blue-500",
+        "bg-gradient-to-t from-red-500 to-blue-500",
+        "bg-diagonal from-red-500 to-blue-500",
+        "bg-gradient-diagonal from-red-500 to-blue-500"
+      ],
+      "level": "<easy>easy</easy>",
+      "correct": "bg-gradient-to-t from-red-500 to-blue-500",
+      "explanation": "In Tailwind, `to-t` makes a gradient go from bottom to top (diagonal). Other directions are straight lines or invalid."
     },
     "2": {
       "question": "Which React hook allows you to store a value that persists across renders but doesn't trigger re-renders when changed?",
@@ -5020,11 +5020,11 @@
       "options": [
         "0",
         "undefined",
-        "\"\" (empty string)",
+        "'' (empty string)",
         "[]"
       ],
       "level": "<easy>easy</easy>",
-      "correct": "\"\" (empty string)",
+      "correct": "'' (empty string)",
       "explanation": "In JavaScript, using the `+` operator with arrays converts them to strings, so `[] + []` results in an empty string."
     },
     "13": {
@@ -6142,6 +6142,198 @@
       "level": "<medium>medium</medium>",
       "correct": "Hook functions are much easier to use when working with many files",
       "explanation": "Class components worked in older React, but functional components with hooks are cleaner, easier to maintain, and more reusable, which is why modern React favors them."
+    },
+    "106": {
+      "question": "i18n helps support multiple languages in applications. Which of the following is another popular library that provides multi-language support?",
+      "options": [
+        "react-i18next",
+        "moment.js",
+        "redux",
+        "framer-motion"
+      ],
+      "level": "<medium>medium</medium>",
+      "correct": "react-i18next",
+      "explanation": "react-i18next is a widely used library that integrates i18next for multi-language support in applications, similar to how i18n helps handle translations and language switching."
+    },
+    "107": {
+      "question": "If you can manage localStorage effectively, does that mean you understand backend development?",
+      "options": [
+        "Yes, localStorage is a backend database",
+        "No, localStorage is client-side only",
+        "Yes, because it stores persistent data like a server",
+        "No, backend is about design patterns, not storage"
+      ],
+      "level": "<medium>medium</medium>",
+      "correct": "No, localStorage is client-side only",
+      "explanation": "LocalStorage only saves data in the user's browser. Backend involves servers, databases, and APIs, which are separate from localStorage."
+    },
+    "108": {
+      "question": "What's the main difference between GitHub and Vercel when you upload a project?",
+      "options": [
+        "GitHub hosts code repositories, while Vercel hosts live web applications",
+        "GitHub automatically deploys your site in the browser, Vercel does not",
+        "Vercel only stores code, GitHub runs the project",
+        "GitHub can run backend servers, Vercel cannot"
+      ],
+      "level": "<medium>medium</medium>",
+      "correct": "GitHub hosts code repositories, while Vercel hosts live web applications",
+      "explanation": "GitHub is primarily for storing and sharing code. Vercel deploys your project so it can run in a browser with live URLs."
+    },
+    "109": {
+      "question": "Can you pass a custom hook directly as the initial value to useState in React?",
+      "options": [
+        "Yes, you can pass any hook as the initial value",
+        "No, useState cannot accept a custom hook",
+        "Only if the custom hook returns a number or string",
+        "Yes, but only for class components"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "No, useState cannot accept a custom hook",
+      "explanation": "Hooks like useState can store a string,number, boolean, even a function, but it cannot take another custom hook as their initial value. Hooks must be called at the top level of a component or other hooks, not passed as a value."
+    },
+    "110": {
+      "question": "What does the <svg> tag represent in HTML?",
+      "options": [
+        "A container for Scalable Vector Graphics",
+        "A way to display bitmap images",
+        "A special CSS styling block",
+        "A JavaScript animation element"
+      ],
+      "level": "<medium>medium</medium>",
+      "correct": "A container for Scalable Vector Graphics",
+      "explanation": "The <svg> tag defines a container for SVG graphics, which are vector-based and can scale without losing quality."
+    },
+    "111": {
+      "question": "Where is using SVG especially beneficial compared to regular images?",
+      "options": [
+        "For large background photos",
+        "For logos, icons, and simple illustrations that need to scale",
+        "For videos",
+        "For font files"
+      ],
+      "level": "<medium>medium</medium>",
+      "correct": "For logos, icons, and simple illustrations that need to scale",
+      "explanation": "SVGs are vector-based, so they scale perfectly at any resolution, making them ideal for logos, icons, and simple illustrations."
+    },
+    "112": {
+      "question": "Can you create a unique icon using just an <svg> tag?",
+      "options": [
+        "Yes, by combining paths, shapes, and colors",
+        "No, SVG can only display pre-made images",
+        "Only if you convert it from PNG first",
+        "No, SVG is only decorative"
+      ],
+      "level": "<medium>medium</medium>",
+      "correct": "Yes, by combining paths, shapes, and colors",
+      "explanation": "SVGs can be built from scratch using basic shapes, paths, and styling, allowing you to create completely unique icons without importing images."
+    },
+    "113": {
+      "question": "How can you use an inline SVG in a React project?",
+      "options": [
+        "Directly as a JSX <svg> tag with paths/shapes",
+        "Only as an <img> tag",
+        "Only in external files",
+        "SVGs cannot be used in React"
+      ],
+      "level": "<medium>medium</medium>",
+      "correct": "Directly as a JSX <svg> tag with paths/shapes",
+      "explanation": "In React, the most common way to use SVGs is inline in JSX with <svg> and <path>/<circle>/<rect> elements, allowing full styling and manipulation via props or CSS."
+    },
+    "114": {
+      "question": "In which of these places are SVGs commonly used?",
+      "options": [
+        "Website logos, icons, illustrations, charts, and animations",
+        "Full-length movies and Audio files",
+        "it is not used in front-end",
+        "Database storage"
+      ],
+      "level": "<medium>medium</medium>",
+      "correct": "Website logos, icons, illustrations, charts, and animations",
+      "explanation": "SVGs are widely used in web development for scalable visuals such as logos, icons, interactive charts, and even small animations."
+    },
+    "115": {
+      "question": "You have a large list of 1000+ items in React. Rendering all at once causes performance issues. What is the best approach to optimize rendering?",
+      "options": [
+        "Render all items normally; React handles performance automatically",
+        "Use pagination or virtualized lists like react-window or react-virtualized",
+        "Wrap the list in a <div> with overflow hidden",
+        "Use setTimeout to delay rendering of each item"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "Use pagination or virtualized lists like react-window or react-virtualized",
+      "explanation": "Rendering thousands of items at once can freeze the UI. Using virtualized lists or pagination renders only visible items, improving performance dramatically in React applications."
+    },
+    "116": {
+      "question": "In Tailwind, what's a ring?",
+      "options": [
+        "A border utility that controls border thickness",
+        "A utility that adds an outline-like box shadow around an element",
+        "A built-in gradient background style",
+        "A padding utility for rounded corners"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "A utility that adds an outline-like box shadow around an element",
+      "explanation": "Tailwind's `ring` creates an outline effect using box-shadow, not a border. It is rendered outside of borders, making it useful for focus states."
+    },
+    "117": {
+      "question": "What's the difference between border and ring in Tailwind?",
+      "options": [
+        "Border is applied inside the element box, ring is rendered outside",
+        "Border is always thicker than ring",
+        "Ring replaces the border completely",
+        "Border is applied outside the element box, ring is rendered inside"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "Border is applied inside the element box, ring is rendered outside",
+      "explanation": "Borders take up space in the element box model, while rings are added using box-shadow, so they appear outside and don’t affect layout."
+    },
+    "118": {
+      "question": "If we use both border and ring on the same element, which one is inner and which one is outer?",
+      "options": [
+        "Border is outside, ring is inside",
+        "Ring is outside, border is inside",
+        "They overlap randomly",
+        "It depends on Tailwind's theme config"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "Ring is outside, border is inside",
+      "explanation": "The border is drawn as part of the element’s box, while the ring is rendered as an outer outline via box-shadow, so the border is inner and the ring surrounds it."
+    },
+    "119": {
+      "question": "How can you style a ring in Tailwind?",
+      "options": [
+        "By using utilities like ring-{color}, ring-{size}, and ring-offset",
+        "Only by writing custom CSS",
+        "By changing border utilities",
+        "You cannot style rings in Tailwind"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "By using utilities like ring-{color}, ring-{size}, and ring-offset",
+      "explanation": "Tailwind provides utilities like `ring-2`, `ring-blue-500`, and `ring-offset-2` for size, color, and spacing customization without custom CSS."
+    },
+    "120": {
+      "question": "What will be the output of: console.log([] * {} + 12);",
+      "options": [
+        "12",
+        "NaN12",
+        "NaN",
+        "undefined12"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "NaN",
+      "explanation": "`[] * {}` tries to convert both operands to numbers. `[]` becomes 0, `{}` becomes NaN, so the multiplication is NaN. Adding 12 still results in NaN."
+    },
+    "121": {
+      "question": "What will be the output of: console.log('12' + 12 + [12]);",
+      "options": [
+        "24",
+        "'121212'",
+        "'121212' (as string)",
+        "'1212,12'"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "'121212'",
+      "explanation": "'12' + 12 turns into string concatenation → '1212'. Then adding `[12]` calls `toString()` on the array, giving '12'. Final result is \"121212\"."
     }
   },
   "lastSec": {

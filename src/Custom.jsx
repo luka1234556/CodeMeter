@@ -91,32 +91,32 @@ function Custom() {
     { 
       label: `${t("quizLevels.level1")}`, min: 0, 
       color: "bg-gradient-to-b from-[#cd7f32] to-[#b87333] text-orange-200 border-2 border-orange-200", 
-      icon: <img src="/level_1.png" alt="Level-1"></img>, 
+      icon: <img src="level_1.png" alt="Level-1"></img>, 
     },
     { 
       label: `${t("quizLevels.level2")}`, min: 25, 
       color: "bg-gradient-to-br from-[#c0c0c0] to-[#a9a9a9] text-slate-200 border-2 border-slate-100", 
-      icon: <img src="/level_2.png" alt="Level-2"></img>, 
+      icon: <img src="level_2.png" alt="Level-2"></img>, 
     },
     { 
       label: `${t("quizLevels.level3")}`, min: 50, 
       color: "bg-gradient-to-b from-[#e6e8fa] to-[#c0c0c0] text-gray-800 border-2 border-gray-700", 
-      icon: <img src="/level_3.png" alt="Level-3"></img>, 
+      icon: <img src="level_3.png" alt="Level-3"></img>, 
     },
     { 
       label: `${t("quizLevels.level4")}`, min: 65, 
       color: "bg-gradient-to-b from-[#50c878] to-[#2e8b57] text-emerald-300 border-2 border-emerald-100", 
-      icon: <img src="/level_4.png" alt="Level-4"></img>, 
+      icon: <img src="level_4.png" alt="Level-4"></img>, 
     },
     { 
       label: `${t("quizLevels.level5")}`, min: 80, 
       color: "bg-gradient-to-b from-[#ff4f4f] to-[#d40000] text-rose-200 border-2 border-rose-100", 
-      icon: <img src="/level_5.png" alt="Level-5"></img>, 
+      icon: <img src="level_5.png" alt="Level-5"></img>, 
     },
     { 
       label: `${t("quizLevels.level6")}`, min: 90, 
       color: "bg-gradient-to-b from-[#ffd700] to-[#e6c200] text-yellow-900 border-2 border-yellow-100", 
-      icon: <img src="/level_6.png" alt="Level-6"></img>, 
+      icon: <img src="level_6.png" alt="Level-6"></img>, 
     },
   ];
   const correctCount = Object.values(userAnswers).filter((a) => a.isCorrect).length;
@@ -354,45 +354,61 @@ function Custom() {
         flex flex-col justify-between min-h-[37rem] md:min-h-[40rem]"
         >
           {showExplanation && (
-            <div
-            className="fixed inset-0 bg-indigo-950/5 overflow-x-hidden
-            md:backdrop-blur-xs backdrop-blur-sm 
-            flex items-center justify-center z-30 rounded-2xl"
-            onClick={() => setShowExplanation(false)}
+          <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-indigo-950/60 
+          to-black/40 backdrop-blur-sm rounded-2xl"
+          onClick={() => setShowExplanation(false)}
+          >
+            <motion.div
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 40, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full h-full md:h-auto md:max-h-[80vh] max-w-4xl
+            bg-gradient-to-br from-indigo-950 via-indigo-900 to-indigo-950
+            border-2 border-indigo-400 rounded-3xl shadow-2xl p-6 md:p-10 flex flex-col overflow-y-auto"
             >
+              {/* Glow Effect */}
+              <div className="absolute inset-0 rounded-3xl border-4 border-indigo-400 opacity-20 shadow-[0_0_50px_rgba(120,100,255,0.5)] pointer-events-none"></div>
+
+              {/* Close Button */}
+              <IoClose
+              onClick={() => setShowExplanation(false)}
+              className="absolute right-6 top-6 text-3xl text-indigo-300 hover:text-indigo-100 hover:scale-110 transition-transform cursor-pointer z-20"
+              />
+
+              {/* Title */}
+              <h2 className="text-3xl md:text-4xl font-extrabold text-indigo-200 mb-6 flex items-center justify-center gap-3 border-b border-indigo-400 pb-3">
+                <LuBrainCircuit className="text-3xl md:text-4xl animate-pulse text-indigo-300" />
+                {t("main.explanation")}
+              </h2>
+
+              {/* Body */}
               <div
-              className="bg-gradient-to-tl border-[1.8px] border-indigo-100 rounded-xl 
-              px-3 md:px-4 py-5 max-w-2xl relative
-              from-indigo-950 via-indigo-900 to-indigo-950"
-              onClick={(e) => e.stopPropagation()}
+              className={`flex-1 text-indigo-100 font-medium leading-relaxed
+              ${i18n.language === "ka" ? "text-[0.9rem] md:text-[1.1rem]" : "text-base md:text-[1.2rem]"}`}
               >
-                <span 
-                className="absolute -inset-5 z-10 rounded-xl border-2 
-                border-indigo-300 random-shadow pointer-events-none"
-                />
-
-                <IoClose 
-                onClick={() => setShowExplanation(false)}
-                className="absolute right-2 top-2 text-xl cursor-pointer
-                hover:scale-110 hover:text-indigo-300 text-indigo-400"
-                />
-
-                {/* Title */}
-                <h2 
-                className="text-2xl font-bold text-indigo-300 mb-3 text-center 
-                flex items-center gap-1 border-b-1 pb-1"
-                >
-                  <LuBrainCircuit className="text-2xl"/> 
-                  {t("main.explanation")}
-                </h2>
-
-                {/* Actual Explanation */}
-                <p className="text-indigo-100 font-semibold mb-4">
+                <p>
                   {explanation}
                 </p>
               </div>
-            </div>
-          )}
+
+              {/* Footer */}
+              <div className="mt-6 flex justify-center">
+                <button
+                onClick={() => setShowExplanation(false)}
+                className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
 
           {menu && (
             <div className="fixed inset-0 z-30 bg-black/70 flex justify-center items-center 
@@ -885,8 +901,9 @@ function Custom() {
 
           {/*Flex col-2 */}
           <div
-          className="flex flex-wrap sm:justify-center md:justify-center gap-2 mt-6
-          rounded-2xl border border-indigo-400/80 bg-indigo-900/30 backdrop-blur-xl shadow-lg px-4 py-3"
+          className="flex flex-wrap sm:justify-center md:justify-center mt-6
+          rounded-2xl border border-indigo-400/80 bg-indigo-900/30 backdrop-blur-xl 
+          shadow-lg py-2 gap-4"
           >
             {/* Left side: Question ID */}
             <div className="hidden md:flex items-center text-indigo-100 gap-2 font-mono">
@@ -980,7 +997,7 @@ function Custom() {
                     key={button.id}
                     onClick={button.click}
                     disabled={button.disabled}
-                    className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-xl font-medium
+                    className={`hidden md:flex items-center gap-2 px-4 py-3 rounded-xl font-medium
                     transition-all duration-200 cursor-pointer
                     ${i18n.language === "ka" ? "md:text-[1rem] lg:text-[1.2rem]" : "md:text-[1.1rem] lg:text-[1.3rem]"}
                     ${
@@ -1000,11 +1017,11 @@ function Custom() {
                   key={button.id}
                   onClick={button.click}
                   disabled={button.disabled}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium
-                  transition-all duration-200 cursor-pointer sm:px-2
+                  className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium
+                  transition-all duration-200 cursor-pointer sm:px-2 md:px-6
                   ${
                     i18n.language === "ka" 
-                    ? "text-[0.9rem] md:text-[1rem] lg:text-[1.2rem]" 
+                    ? "text-[0.89rem] md:text-[1rem] lg:text-[1.2rem]" 
                     : "text-[1rem] md:text-[1.1rem] lg:text-[1.3rem]"}
                   ${
                     button.disabled

@@ -89,27 +89,27 @@ function ReactQuiz() {
   const masteryLevels = [
     { label: `${t("quizLevels.level1")}`, min: 0, 
         color: "bg-gradient-to-b from-[#cd7f32] to-[#b87333] text-orange-200 border-2 border-orange-200", 
-        icon: <img src="/level_1.png" alt="Level-1"></img>, 
+        icon: <img src="level_1.png" alt="Level-1"></img>, 
     },
     { label: `${t("quizLevels.level2")}`, min: 25, 
         color: "bg-gradient-to-br from-[#c0c0c0] to-[#a9a9a9] text-slate-200 border-2 border-slate-100", 
-        icon: <img src="/level_2.png" alt="Level-2"></img>, 
+        icon: <img src="level_2.png" alt="Level-2"></img>, 
     },
     { label: `${t("quizLevels.level3")}`, min: 50, 
         color: "bg-gradient-to-b from-[#e6e8fa] to-[#c0c0c0] text-gray-800 border-2 border-gray-700", 
-        icon: <img src="/level_3.png" alt="Level-3"></img>, 
+        icon: <img src="level_3.png" alt="Level-3"></img>, 
     },
     { label: `${t("quizLevels.level4")}`, min: 65, 
         color: "bg-gradient-to-b from-[#50c878] to-[#2e8b57] text-emerald-300 border-2 border-emerald-100", 
-        icon: <img src="/level_4.png" alt="Level-4"></img>, 
+        icon: <img src="level_4.png" alt="Level-4"></img>, 
     },
     { label: `${t("quizLevels.level5")}`, min: 80, 
         color: "bg-gradient-to-b from-[#ff4f4f] to-[#d40000] text-rose-200 border-2 border-rose-100", 
-        icon: <img src="/level_5.png" alt="Level-5"></img>, 
+        icon: <img src="level_5.png" alt="Level-5"></img>, 
     },
     { label: `${t("quizLevels.level6")}`, min: 90, 
         color: "bg-gradient-to-b from-[#ffd700] to-[#e6c200] text-yellow-900 border-2 border-yellow-100", 
-        icon: <img src="/level_6.png" alt="Level-6"></img>, 
+        icon: <img src="level_6.png" alt="Level-6"></img>, 
     },
   ];
   const correctCount = Object.values(userAnswers).filter((a) => a.isCorrect).length;
@@ -360,48 +360,60 @@ function ReactQuiz() {
           </svg>
 
           {showExplanation && (
-            <div
-            className="fixed inset-0 bg-black/40 backdrop-blur-xs 
-            flex items-center justify-center z-30 overflow-x-hidden"
+            <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-cyan-900/50 to-slate-900/50 backdrop-blur-sm"
             onClick={() => setShowExplanation(false)}
             >
-              <div
-              className="bg-gradient-to-br from-[#007579] via-[#28a3a7] to-[#08b4cb] 
-              border-2 border-cyan-300 text-cyan-100 rounded-2xl 
-              px-4 sm:px-6 py-6 max-w-2xl w-full relative shadow-2xl
-              backdrop-blur-md"
+              <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 50, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
+              className="relative w-full h-full md:h-auto md:max-h-[80vh] max-w-4xl
+              bg-gradient-to-br from-[#007579] via-[#28a3a7] to-[#08b4cb]
+              border-2 border-cyan-400 rounded-3xl shadow-2xl p-6 md:p-10 flex flex-col overflow-y-auto"
               >
-                {/* Outer glow frame */}
-                <span
-                className="absolute -inset-5 z-10 rounded-2xl border-2 
-                border-cyan-300 shadow-lg pointer-events-none"
-                />
+                {/* Neon Glow Effect */}
+                <div className="absolute inset-0 rounded-3xl border-4 border-cyan-400 
+                opacity-20 shadow-[0_0_50px_rgba(0,255,255,0.4)] pointer-events-none"/>
 
-                {/* Close button */}
+                {/* Close Button */}
                 <IoClose
                 onClick={() => setShowExplanation(false)}
-                className="absolute right-3 top-3 text-2xl cursor-pointer text-cyan-200 
-                hover:text-cyan-100 hover:scale-110 transition-transform"
+                className="absolute right-6 top-6 text-3xl text-cyan-200 hover:text-white hover:scale-110 transition-transform cursor-pointer z-20"
                 />
 
-                {/* Title */}
-                <h2
-                className="text-2xl font-bold text-cyan-200 mb-4 text-center flex items-center gap-2 
-                border-b border-cyan-200 pb-2"
-                >
-                  <LuBrainCircuit className="text-2xl" />
+                {/* Header */}
+                <h2 className="text-3xl md:text-4xl font-extrabold text-cyan-100 mb-6 flex items-center justify-center gap-3 border-b border-cyan-300 pb-3">
+                  <LuBrainCircuit className="text-3xl md:text-4xl animate-pulse text-cyan-300" />
                   {t("main.explanation")}
                 </h2>
 
-                {/* Body text */}
-                <p 
-                className="text-cyan-100 font-medium leading-relaxed mb-4">
-                  {explanation}
-                </p>
+                {/* Body */}
+                <div
+                className={`flex-1 text-cyan-100 font-medium leading-relaxed
+                ${i18n.language === "ka" ? "text-[0.9rem] md:text-[1.1rem]" : "text-base md:text-[1.2rem]"}`}
+                >
+                  <p>
+                    {explanation}
+                  </p>
+                </div>
 
-              </div>
-            </div>
+                {/* Footer / Action */}
+                <div className="mt-6 flex justify-center">
+                  <button
+                    onClick={() => setShowExplanation(false)}
+                    className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
           )}
           
           {menu && (
@@ -514,7 +526,8 @@ function ReactQuiz() {
                     <div className="flex flex-col gap-6">
 
                       {/* Title */}
-                      <h2 className={`font-bold text-cyan-300 text-center mb-2 flex items-center justify-center gap-2 border-b border-indigo-600 pb-4
+                      <h2 className={`font-bold text-cyan-300 text-center mb-2 flex items-center justify-center 
+                      gap-2 border-b border-cyan-600 pb-4
                         ${i18n.language === "ka" 
                         ? "text-[1rem] md:text-[1.5rem]" 
                         : "text-[1.2rem] md:text-[1.6rem]"}`}>
@@ -859,9 +872,9 @@ function ReactQuiz() {
 
                 if (showAnswers) {
                   if (isCorrect) {
-                    style += "bg-[#27A599] text-cyan-100 border-green-200";
+                    style += "bg-gradient-to-b from-[#27A599] to-[#00C9A7] text-cyan-100 border-green-200";
                   } else if (isSelected) {
-                    style += "bg-red-500 text-rose-100 border-red-300";
+                    style += "bg-gradient-to-b from-[#FF5E5E] to-[#FF2E2E] text-rose-100 border-red-300";
                   } else {
                     style += "bg-cyan-500/5 text-[#00B8CF]/40 border-cyan-800";
                   }
@@ -914,11 +927,13 @@ function ReactQuiz() {
           
           {/*Flex col-2*/}
           <div
-          className="flex flex-wrap sm:justify-center md:justify-center gap-2 mt-6
-          rounded-2xl border border-cyan-400/80 bg-cyan-900/30 backdrop-blur-xl shadow-lg px-4 py-3"
+          className="flex flex-wrap sm:justify-center md:justify-center mt-6 gap-4
+          rounded-2xl border border-cyan-400/80 bg-cyan-900/30 backdrop-blur-xl 
+          shadow-lg py-2"
           >
             {/* Left side: Question ID */}
-            <div className="hidden md:flex items-center text-cyan-100 gap-2 font-mono">
+            <div 
+            className="hidden md:flex items-center text-cyan-100 gap-2 font-mono">
               <span
                 className="flex items-center gap-1 px-3 py-1 rounded-md bg-cyan-700/60 
                 border border-cyan-400/40 text-2xl"
@@ -991,9 +1006,11 @@ function ReactQuiz() {
                     key={button.id}
                     onClick={button.click}
                     disabled={button.disabled}
-                    className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-xl font-medium
+                    className={`hidden md:flex items-center gap-2 py-3 rounded-xl font-medium
                     transition-all duration-200 cursor-pointer
-                    ${i18n.language === "ka" ? "md:text-[1rem] lg:text-[1.2rem]" : "md:text-[1.1rem] lg:text-[1.3rem]"}
+                    ${i18n.language === "ka" 
+                      ? "md:text-[1rem] lg:text-[1.2rem] px-3" 
+                      : "md:text-[1.1rem] lg:text-[1.3rem] px-4"}
                     ${button.disabled ? "bg-cyan-800/40 text-cyan-400 cursor-not-allowed"
                     : "bg-gradient-to-b active:bg-gradient-to-t from-[#00B8CF] to-[#0098ac] hover:from-[#0ac6df] hover:to-cyan-400 text-white shadow-sm hover:shadow-md"
                     }`}
@@ -1009,10 +1026,10 @@ function ReactQuiz() {
                   key={button.id}
                   onClick={button.click}
                   disabled={button.disabled}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium
-                  transition-all duration-200 cursor-pointer sm:px-2
+                  className={`flex items-center py-3 rounded-xl font-medium md:gap-2
+                  transition-all duration-200 cursor-pointer sm:px-2 px-4 md:px-6 
                   ${i18n.language === "ka" 
-                  ? "text-[0.9rem] md:text-[1rem] lg:text-[1.2rem]" 
+                  ? "text-[0.89rem] md:text-[1rem] lg:text-[1.2rem]" 
                   : "text-[1rem] md:text-[1.1rem] lg:text-[1.3rem]"}
                   ${button.disabled 
                   ? "bg-cyan-800/40 text-cyan-500/70 cursor-not-allowed"
@@ -1050,7 +1067,9 @@ function ReactQuiz() {
                     {button.showMode === "text" && (
                       <div 
                       className={`
-                       ${i18n.language === "ka" ? "md:text-[1rem] lg:text-[1.2rem]" : "md:text-[1.1rem] lg:text-[1.3rem]"}`}>
+                       ${i18n.language === "ka" 
+                       ? "md:text-[1rem] lg:text-[1.2rem]" 
+                       : "md:text-[1.1rem] lg:text-[1.3rem]"}`}>
                         <span className="sm:hidden">
                           {button.text}
                         </span>
@@ -1090,7 +1109,7 @@ function ReactQuiz() {
           <h1
           className={`bg-gradient-to-b from-cyan-800 to-cyan-500 text-white 
           py-3 px-5 rounded-lg hover:brightness-110 transition mb-7 md:mb-10
-          flex items-center gap-1 shadow-md md:rounded-2xl font-bold
+          flex items-center gap-1 shadow-md md:rounded-2xl font-bold border
           ${i18n.language === "ka" 
             ? "text-[1.1rem] md:text-[1.5rem]" 
             : "text-[1.1rem] md:text-[1.6rem]"}`}
@@ -1199,15 +1218,15 @@ function ReactQuiz() {
 
         <section
         id="reactVideo"
-        className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-10 
-        bg-white/10 backdrop-blur-md border border-cyan-500 rounded-2xl shadow-lg 
-        py-6 my-[1rem]"
+        className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-10
+        backdrop-blur-md border border-cyan-500 rounded-2xl shadow-lg 
+        py-6 my-[1rem] bg-gradient-to-b from-[#00B8CF]/20 via-[#448A8D]/10 to-[#013739]/20"
         >
           {/* Section Header */}
           <h1
           className={`bg-gradient-to-b text-white py-3 px-5 rounded-lg hover:bg-cyan-700 transition
           flex items-center gap-2 from-cyan-800 to-cyan-500 shadow-lg
-          mb-1 md:mb-2 font-bold md:rounded-2xl
+          mb-1 md:mb-2 font-bold md:rounded-2xl border
           ${i18n.language === "ka" 
             ? "text-[1.1rem] md:text-[1.5rem]" 
             : "text-[1.1rem] md:text-[1.7rem]"}`}

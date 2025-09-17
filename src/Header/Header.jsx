@@ -66,7 +66,7 @@ function Header({ showBackButton = true , theme = "main", useGradient = true }) 
     ${headerBg} ${colors.border} ${colors.primary}
     sticky top-0 px-3 flex justify-between items-center backdrop-blur-3xl z-20`}>
       {/* Left side */}
-      <div className="flex items-center justify-between gap-3 w-[50rem]">
+      <div className="flex items-center justify-between gap-3">
         {showBackButton && (
           <button
           onClick={() => navigate("/")}
@@ -80,15 +80,16 @@ function Header({ showBackButton = true , theme = "main", useGradient = true }) 
             </span>
           </button>    
         )}
+        
 
         {/* Logo/title if not showing back button */}
         {!showBackButton && (
           <div 
-          className="flex items-center gap-2">
+          className="flex items-center gap-1">
             <img 
-            src="/CodeMeter.png" 
-            alt="CodeMeter Logo" 
-            className="w-10 h-10 object-contain" />
+            src="CodeMeter.png" 
+            alt="Logo" 
+            className="w-10 h-10 md:w-12 md:h-12 object-contain" />
 
             <h1 
             className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r 
@@ -97,103 +98,108 @@ function Header({ showBackButton = true , theme = "main", useGradient = true }) 
             </h1>
           </div>
         )}
-
-        {/* Mobile heading */}
-        <h1 
-        className={`text-2xl sm:hidden font-semibold ${colors.heading2}`}>
-          CodeMeter
-        </h1>
       </div>
 
       {/* Mobile */}
-      {isMobile ? (
-        <div className="flex items-center justify-end w-full gap-3">
-          {/* Language Switcher */}
-          <button
-          onClick={() => {
-            setLanguageBox(!languageBox);
-            setBurgerMenu(false);
-          }}
-          className={`flex items-center gap-2 py-2 px-1
-          ${colors.primary}`}
-          >
-            <img 
-            src={languages[i18n.language]?.image || "US.png"} 
-            className="w-5" 
-            alt="flag" />
-
-            <span 
-            className="text-xl">
-              {languages[i18n.language]?.label}
+      <div className="flex items-center justify-end w-full gap-3">
+        {isMobile ? (
+          <div className="flex items-center justify-between">
+            
+            <span className={`mr-[2.5rem] font-bold text-2xl text-transparent
+            ${colors.heading2} bg-clip-text`}>
+              CodeMeter
             </span>
-          </button>
-
-          {/* Burger */}
-          <button
-          onClick={() => {
-            setLanguageBox(false)
-            setBurgerMenu(!burgerMenu);
-          }}
-          className={`cursor-pointer text-2xl 
-          ${burgerMenu ? `${colors.primary} rotate-90 transition-all duration-200` : ""}`}
-          >
-            <GiHamburgerMenu />
-          </button>
-        </div>
-      ) : (
-        /* Desktop Navigation */
-        <ul 
-        className={`flex font-semibold text-lg items-center mr-10
-        ${i18n.language === "ka" 
-        ? "md:text-[0.9rem] gap-1 lg:text-[1.2rem] lg:gap-4" 
-        : "md:text-[1rem] gap-3 lg:text-[1.3rem] lg:gap-6"}`}>
-          {navItems.map((item, idx) => (
-            <li 
-            key={item.id} 
-            className="flex items-center gap-2">
+            
+            <div className="flex gap-2">
+              {/* Language Switcher */}
               <button
-              onClick={() => navigate(item.path)}
-              className={`flex items-center gap-2 px-3 py-1 rounded-sm transition-all duration-200
-              hover:text-white ${colors.hover} cursor-pointer
-              ${currentPath === item.path ? "border-b-4 rounded-xs font-bold text-sky-400/60" : ""}`}
+              onClick={() => {
+                setLanguageBox(!languageBox);
+                setBurgerMenu(false);
+              }}
+              className={`flex items-center gap-2 py-2 px-1
+              ${colors.primary}`}
               >
-                {item.icon}
-                <span>
-                  {item.label}
-                </span>
+                <img 
+                src={languages[i18n.language]?.image || "US.png"} 
+                className="w-5" 
+                alt="flag" />
 
+                <span 
+                className="text-xl">
+                  {languages[i18n.language]?.label}
+                </span>
               </button>
 
-              {idx !== navItems.length - 1 && 
-                <span className={`h-8 w-[1px] ${colors.border} rounded-full`} />
-              }
-            </li>
-          ))}
+              {/* Burger */}
+              <button
+              onClick={() => {
+                setLanguageBox(false)
+                setBurgerMenu(!burgerMenu);
+              }}
+              className={`cursor-pointer text-2xl 
+              ${burgerMenu ? `${colors.primary} rotate-90 transition-all duration-200` : ""}`}
+              >
+                <GiHamburgerMenu />
+              </button>
+            </div>
+          </div>
+        ) : (
+          /* Desktop Navigation */
+          <nav 
+          className={`flex font-semibold text-lg items-center
+          ${i18n.language === "ka" 
+          ? "md:text-[0.9rem] gap-1 lg:text-[1.2rem] lg:gap-4" 
+          : "md:text-[1rem] gap-3 lg:text-[1.3rem] lg:gap-6"}`}>
+            {navItems.map((item, idx) => (
+              <ul
+              key={item.id} 
+              className="flex items-center gap-2">
+                <button
+                onClick={() => navigate(item.path)}
+                className={`flex items-center gap-2 px-3 py-1 rounded-sm transition-all duration-200
+                hover:text-white ${colors.hover} cursor-pointer
+                ${currentPath === item.path ? "border-b-4 rounded-xs font-bold text-sky-400/60" : ""}`}
+                >
+                  {item.icon}
 
-          <button
-          onClick={() => setLanguageBox(!languageBox)}
-          className={`flex items-center gap-2 py-2 pl-3 border-l-[1px] h-[2rem] 
-          cursor-pointer
-          ${colors.languagetext}`}
-          >
-            <img 
-            src={languages[i18n.language]?.image || "US.png"} 
-            className="w-5" 
-            alt="flag" />
+                  <span>
+                    {item.label}
+                  </span>
 
-            <span 
-            className="text-xl">
-              {languages[i18n.language]?.label}
-            </span>
+                </button>
 
-            <FaAngleUp
-            className={`transition-transform duration-200 text-3xl 
-            ${languageBox ? "rotate-180" : ""}`}
-            />
-          </button>
-          
-        </ul>
-      )}
+                {idx !== navItems.length - 1 && 
+                  <span className={`h-8 w-[1px] ${colors.border} rounded-full`} />
+                }
+              </ul>
+            ))}
+
+            <button
+            onClick={() => setLanguageBox(!languageBox)}
+            className={`flex items-center gap-2 py-2 pl-3 border-l-[1px] h-[2rem] 
+            cursor-pointer
+            ${colors.languagetext}`}
+            >
+              <img 
+              src={languages[i18n.language]?.image || "US.png"} 
+              className="w-5" 
+              alt="flag" />
+
+              <span 
+              className="text-xl">
+                {languages[i18n.language]?.label}
+              </span>
+
+              <FaAngleUp
+              className={`transition-transform duration-200 text-xl 
+              ${languageBox ? "rotate-180" : ""}`}
+              />
+            </button>
+            
+          </nav>
+        )}
+      </div>
 
       {languageBox && (
         <div 
@@ -208,7 +214,7 @@ function Header({ showBackButton = true , theme = "main", useGradient = true }) 
               setLanguageBox(false);
             }}
             className={`flex items-center justify-start gap-2 cursor-pointer 
-            ${colors.hover} p-1 rounded-[5px] transition-all duration-150
+            ${colors.hover} p-2 rounded-[5px] transition-all duration-150
             ${i18n.language === code ? `${colors.pickedLg}` : ""}`}
             >
               <img 

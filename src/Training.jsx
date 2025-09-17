@@ -179,18 +179,21 @@ function Training() {
           className="flex flex-col gap-6 z-10 min-w-full md:min-w-[43rem] max-w-xl">
             {/* Heading */}
             <div 
-            className="flex items-center justify-between gap-1 w-full">
+            className={`flex items-center justify-between gap-1
+            ${i18n.language === "ka" ? "px-6 md:px-1" : "px-0"}`}>
               <motion.h1
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }} 
               className={`font-extrabold pt-1 text-transparent pb-[8px]
               bg-clip-text bg-gradient-to-r from-sky-300 to-blue-500
-              ${i18n.language === "ka" ? "text-[1.6rem] md:text-[2.5rem]" : "text-3xl md:text-5xl"}`}>
+              ${i18n.language === "ka" 
+              ? "text-2xl md:text-[2.9rem]" 
+              : "text-3xl md:text-5xl"}`}>
                 {t("training.heroSection.heading")}
               </motion.h1>
 
-              <span className="rounded-full border border-sky-300 p-2">
+              <span className="rounded-full border border-sky-300 p-1 mb-5">
                 <LuBrainCircuit className="text-sky-300 md:text-[5rem] text-[3.5rem] p-1" />
               </span>
             </div>
@@ -201,12 +204,15 @@ function Training() {
             className={`text-blue-200 leading-relaxed`}>
               <p 
               className={`
-              ${i18n.language === "ka" ? "text-[0.9rem] md:text-lg":"text-md md:text-lg"}`}>
+              ${i18n.language === "ka" 
+              ? "text-[0.9rem] md:text-lg px-6 md:px-1" 
+              : "text-md md:text-lg"}`}>
                 {t("training.heroSection.paragraf1")}
               </p>
 
               <span 
-              className="text-sky-400 font-extrabold flex gap-2 md:text-[1.2rem]">
+              className={`text-sky-400 font-extrabold flex gap-2 md:text-[1.2rem]
+              ${i18n.language === "ka" ? "px-6 md:px-1" : "px-0"}`}>
                 <span className="font-mono text-2xl">&lt;</span>
                 <h2 className="text-orange-400">HTML</h2>/
                 <h2 className="text-sky-500">CSS</h2>/ 
@@ -216,7 +222,8 @@ function Training() {
               </span> 
 
               <p 
-              className={`${i18n.language === "ka" ? "text-[0.9rem] md:text-lg":"text-md md:text-lg"}`}>
+              className={`${i18n.language === "ka" 
+              ? "text-[0.9rem] md:text-lg px-6 md:px-1" : "text-md md:text-lg"}`}>
                 {t("training.heroSection.paragraf2")}
               </p>
             </div>
@@ -224,7 +231,8 @@ function Training() {
             {/* Buttons */}
             <nav
             aria-label="navigations to down quizes" 
-            className="flex items-center gap-4 mt-2">
+            className={`flex items-center gap-4 mt-2
+            ${i18n.language === "ka" ? "px-6 md:px-1" : "px-0"}`}>
               {/* Primary button */}
               <button
               aria-label="Scroller to quiz"
@@ -237,10 +245,13 @@ function Training() {
                   });
                 }
               }}
-              className="px-6 py-4 rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 
+              className={`rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 
               text-white font-semibold shadow-lg hover:scale-105 hover:shadow-xl 
               transition-all duration-300 flex items-center gap-2 cursor-pointer
-              group relative overflow-hidden hover:from-sky-400 md:text-lg text-sm"
+              group relative overflow-hidden hover:from-sky-400
+              ${i18n.language === "ka" 
+                ? "px-3 py-4 md:px-6" 
+                : "px-6 py-4"}`}
               >
                 <span 
                 className={`relative z-10 
@@ -257,10 +268,14 @@ function Training() {
               <button
               aria-label="For more information"
               onClick={() => navigate("/About")}
-              className={`px-6 py-4 rounded-xl border border-sky-400 text-sky-300 font-medium 
+              className={`rounded-xl border border-sky-400 text-sky-300 font-medium 
               bg-transparent hover:bg-sky-500/20 hover:text-white hover:scale-105 
               transition-all duration-300 flex items-center gap-2 cursor-pointer
-              md:text-lg text-sm ${i18n.language === "ka" ? "text-[0.8rem] md:text-[1rem]":"text-md md:text-lg"}`}
+              md:text-lg text-sm 
+              ${i18n.language === "ka" 
+                ? "px-3 py-4 md:px-6" 
+                : "px-6 py-4"}
+              ${i18n.language === "ka" ? "text-[0.8rem] md:text-[1rem]":"text-md md:text-lg"}`}
               >
                 {t("training.heroSection.button2")}
               </button>
@@ -269,7 +284,10 @@ function Training() {
             {/* Trust Stats */}
             <div 
             aria-label="Stats about this app"
-            className="flex gap-8 mt-6 mb-2 ml-2 text-sky-300 font-medium">
+            className={`flex mt-6 mb-2 text-sky-300 font-medium
+            ${i18n.language === "ka" 
+              ? "px-6 gap-2 md:gap-6 md:ml-4 md:px-1" 
+              : "px-2 gap-4 md:gap-8 md:ml-2"}`}>
 
               {/* Questions button */}
               <div 
@@ -289,7 +307,7 @@ function Training() {
                 hover:scale-105 transition-all duration-200"
                 >
                   <span 
-                  className="text-xl font-extrabold text-white 
+                  className="text-[1rem] md:text-xl font-extrabold text-white 
                   group-hover:text-sky-300 flex items-center gap-1">
                     {`${Math.floor(htmlcssQuestions.length + jsQuestions.length + reactQuestions.length + customQuestions.length)}`}
                     <TiPlus className="mt-1" />
@@ -368,7 +386,7 @@ function Training() {
                 hover:border-sky-300 hover:scale-105"
                 >
                   <span 
-                  className="text-xl font-extrabold text-white group-hover:text-sky-300">
+                  className="text-[1rem] md:text-xl font-extrabold text-white group-hover:text-sky-300">
                     4
                   </span>
 
@@ -437,7 +455,9 @@ function Training() {
               h-20 rounded-xl shadow-md shadow-sky-900/40 border border-sky-700/40">
                 <span 
                 className={`font-extrabold text-white text-center
-                ${i18n.language === "ka" ? "text-md" : "text-lg"}`}
+                ${i18n.language === "ka" 
+                ? "text-[0.9rem] md:text-[1rem]" 
+                :"text-[1rem] md:text-[1.1rem]"}`}
                 >
                   {t("training.heroSection.Updates.week")}
                 </span>
@@ -458,14 +478,14 @@ function Training() {
           transition={{duration: 1.5}}
           className="relative flex justify-center items-center z-0">
             <img
-            src="/Coding-amico.png" // replace with your own illustration
+            src="Coding-amico.png"
             alt="Coding Illustration"
             className="hidden lg:block max-w-xl 
             drop-shadow-[0_4px_20px_rgba(56,189,248,0.4)]"
             />
 
             <img 
-            src="/Coding-amico.png" 
+            src="Coding-amico.png" 
             alt="Coding Illustration" 
             className="lg:hidden absolute bottom-1/2 md:-right-[20rem] md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2
             opacity-20 pointer-events-none min-w-[25rem] max-w-[28rem] 
@@ -484,7 +504,7 @@ function Training() {
               >
                 {symbol}
               </motion.span>
-            ))}
+          ))}
 
           {/* Floating Code Elements */}
           <div
@@ -514,7 +534,7 @@ function Training() {
         id="sec1" 
         className="w-full flex items-start justify-start">
           <div 
-          className="py-16 w-full backdrop-blur-lg relative border-r-2
+          className="py-16 w-full backdrop-blur-lg relative
           bg-gradient-to-tr from-[#0f172a] via-[#1e2a48] to-[#111827]
           shadow-xl border-y-2 border-blue-200 md:min-h-[40rem]">
 
@@ -1414,7 +1434,9 @@ function Training() {
                 >
                   <span 
                   className={`text-[#8000ff] drop-shadow-[0_4px_12px_rgba(128,0,255,0.7)]
-                  ${i18n.language === "ka" ? "text-[2rem] md:text-[2.5rem]" : "text-[2.5rem] md:text-[3.2rem]"}`}>
+                  ${i18n.language === "ka" 
+                  ? "text-[2rem] md:text-[2.9rem]" 
+                  : "text-[2.5rem] md:text-[3.2rem]"}`}>
                     <Trans 
                     i18nKey="training.random.heading" />
                   </span>
@@ -1562,8 +1584,8 @@ function Training() {
             <h2 
             className={`font-extrabold bg-clip-text text-transparent 
             ${i18n.language === "ka" 
-            ? "text-[2.3rem] md:text-[2.3rem]" 
-            : "text-[2.2rem] md:text-[2.4rem]"}
+            ? "text-[2rem] md:text-[2.3rem]" 
+            : "text-[2rem] md:text-[2.4rem]"}
             bg-gradient-to-r from-sky-300 to-indigo-700 pb-3`}>
               {t("lastSec.heading")}
             </h2>
@@ -1575,8 +1597,8 @@ function Training() {
             <p 
             className={`mt-6 text-blue-200/80 max-w-2xl mx-auto
             ${i18n.language === "ka" 
-            ? "text-[0.97rem] md:text-[1rem]" 
-            : "text-[1.2rem] md:text-[1.1rem]"}`}>
+            ? "text-[0.9rem] md:text-[1rem]" 
+            : "text-[1rem] md:text-[1.1rem]"}`}>
               {t("lastSec.p1")}
             </p>
           </div>
@@ -1606,8 +1628,9 @@ function Training() {
               shadow-sky-400 shadow-md" />
               
               <img 
-              className="w-28 h-28 rounded-full border-4 border-sky-400 shadow-lg mb-6"
-              src="/luka.jpg" 
+              className="w-[12rem] md:w-[14rem] rounded-full border-2 border-sky-950 
+              shadow-lg mb-2 ring-2 ring-cyan-600"
+              src="luka.jpg" 
               alt="Creator"
               />
 

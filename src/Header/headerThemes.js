@@ -46,7 +46,7 @@ export const headerThemes = {
   },
   react: {
     primary: "text-cyan-200",
-    bgGradient: "from-cyan-800 to-sky-700",
+    bgGradient: "from-cyan-800 to-cyan-700",
     border: "bg-cyan-500",
     hover: "hover:bg-cyan-400/60",
     languagetext: "text-cyan-100",

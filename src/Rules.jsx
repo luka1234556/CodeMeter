@@ -32,13 +32,14 @@ function Rules() {
 
   return (
     <div 
-    className="min-h-screen bg-gradient-to-b from-[#0d1f48] via-[#20315c] to-[#11192a] text-sky-100">
+    className="min-h-screen bg-gradient-to-b from-[#0d1f48] via-[#20315c] 
+    to-[#11192a] text-sky-100">
       
       {/* Fixed Header */}
       <Header showBackButton={true} theme="main"/>
 
       {/* Main content */}
-      <div className="max-w-5xl mx-auto mt-10 px-4">
+      <div className="max-w-5xl mx-auto mt-10">
         <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}

@@ -11,7 +11,7 @@ import { VscLaw } from "react-icons/vsc";
 const themeStyles = {
   html: {
     id: "htmlGuide",
-    heading: "bg-gradient-to-r from-sky-200 via-sky-100 to-slate-300 bg-clip-text text-transparent",
+    heading: "text-sky-50",
     headingBg: "bg-gradient-to-b from-sky-700 to-sky-500",
     text: "text-sky-100",
     border: "border-sky-600",
@@ -21,25 +21,27 @@ const themeStyles = {
   },
   js: {
     id: "jsGuide",
-    heading: "bg-gradient-to-l from-yellow-200 to-amber-200 bg-clip-text text-transparent",
-    headingBg: "bg-gradient-to-b from-amber-500 to-yellow-600",
-    text: "text-yellow-200",
-    border: "border-yellow-500",
-    bg: "bg-gradient-to-b from-amber-500 to-orange-900/70",
-    icon: "text-yellow-200",
+    heading: "text-yellow-200", 
+    headingBg: "bg-gradient-to-r from-yellow-500 to-amber-500", 
+    text: "text-amber-100", 
+    border: "border-amber-600", 
+    bg: "bg-gradient-to-br from-yellow-400 to-amber-500", 
+    bg2: " bg-gradient-to-b from-yellow-400 to-yellow-600", 
+    icon: "text-yellow-100", 
   },
   react: {
     id: "reactGuide",
-    heading: "bg-gradient-to-r from-cyan-200 via-cyan-100 to-cyan-300 bg-clip-text text-transparent",
+    heading: "text-cyan-50",
     headingBg: "bg-gradient-to-b from-cyan-700 to-cyan-500",
     text: "text-cyan-100",
     border: "border-cyan-500",
-    bg: "bg-gradient-to-b from-cyan-600 to-slate-800",
+    bg: "bg-gradient-to-b from-cyan-700 to-cyan-800",
+    bg2: "bg-gradient-to-b from-cyan-800 to-cyan-950",
     icon: "text-cyan-300",
   },
   logic: {
     id: "customGuide",
-    heading: "bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent",
+    heading: "text-indigo-300",
     headingBg: "bg-gradient-to-b from-indigo-900 to-indigo-800",
     text: "text-indigo-300",
     border: "border-indigo-300",
@@ -74,12 +76,12 @@ const QuizSection = ({ theme = "html" }) => {
           {/* Header */}
           <h1
           className={`flex items-center gap-3 ${text} font-extrabold 
-          px-4 py-2 mb-4 rounded-2xl shadow-inner border
+          px-4 py-3 mb-4 rounded-2xl shadow-inner border
           bg-gradient-to-r ${headingBg}
           text-[1.4rem] md:text-[1.8rem] tracking-wide`}
           >
             <span className={`p-2 rounded-full ${bg} ${border}`}>
-              <LuBrainCircuit className={`text-xl ${icon}`} />
+              <LuBrainCircuit className={`text-2xl ${icon}`} />
             </span>
 
             <span 
