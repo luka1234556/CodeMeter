@@ -432,17 +432,17 @@ function Javascript() {
 
       <main 
       role="main"
-      aria-label="Custom Logic Quiz"
+      aria-label="javascript logic quiz"
       className="flex flex-col items-center w-full sm:max-w-full max-w-screen-md 
-      mx-auto sm:px-6 gap-8 mt-2 mb-10">
+      mx-auto sm:px-6 gap-8 mt-2 mb-10 js">
         
         <div 
         className="flex items-center flex-col z-1">
           <h1 
           className={`md:text-5xl font-extrabold text-center mt-5 flex items-center 
-          gap-1 group text-transparent bg-clip-text bg-gradient-to-tr pb-2 
+          gap-1 group text-transparent bg-clip-text bg-gradient-to-b pb-2 
           md:from-yellow-300 md:to-amber-300 text-[2rem]
-          from-yellow-600 to-amber-400`}>
+          from-yellow-500 to-amber-600`}>
             {t("main.header3")}
             <TbBrandJavascript 
             className="md:text-6xl text-4xl mt-1 md:text-amber-200 text-amber-500" />
@@ -467,56 +467,67 @@ function Javascript() {
         backdrop-blur-md border border-yellow-500 rounded-2xl 
         shadow-lg py-4 md:py-10 lg:py-12 md:max-h-[43rem] lg:max-h-[40rem]
         flex flex-col justify-between min-h-[37rem] md:min-h-[40rem]
-        bg-gradient-to-b from-yellow-400 to-yellow-600"
+        bg-gradient-to-b from-yellow-400 to-[#eba000]"
         >
           {showExplanation && (
             <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b 
-            from-yellow-900/50 to-yellow-800/50 backdrop-blur-sm rounded-2xl"
+            className="fixed inset-0 z-50 flex items-center justify-center 
+            bg-black/30 backdrop-blur-sm rounded-2xl"
             onClick={() => setShowExplanation(false)}
             >
               <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 50, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full h-full md:h-auto md:max-h-[80vh] max-w-4xl
-              bg-gradient-to-br from-yellow-500 via-[#ffb300] to-[#ffcc12]
-              border-2 border-yellow-400 rounded-3xl shadow-2xl p-6 md:p-10 flex flex-col overflow-y-auto"
+              className="relative w-full max-w-4xl h-[90%] max-h-[85vh] 
+              bg-gradient-to-br from-[#db9302] via-[#b37802] to-yellow-700
+              rounded-2xl shadow-2xl ring-1 ring-amber-200 
+              flex flex-col overflow-hidden"
               >
-                {/* Neon Glow Effect */}
-                <div className="absolute inset-0 rounded-3xl border-4 border-yellow-400 opacity-20 shadow-[0_0_50px_rgba(255,255,0,0.4)] pointer-events-none"></div>
-
-                {/* Close Button */}
-                <IoClose
-                  onClick={() => setShowExplanation(false)}
-                  className="absolute right-6 top-6 text-3xl text-yellow-100 hover:text-white hover:scale-110 transition-transform cursor-pointer z-20"
-                />
-
                 {/* Header */}
-                <h2 className="text-3xl md:text-4xl font-extrabold text-yellow-100 mb-6 flex items-center justify-center gap-3 border-b border-yellow-300 pb-3">
-                  <LuBrainCircuit className="text-3xl md:text-4xl animate-pulse text-yellow-200" />
-                  {t("main.explanation")}
-                </h2>
-
-                {/* Body */}
-                <div
-                className={`flex-1 text-yellow-100 font-medium leading-relaxed
-                ${i18n.language === "ka" ? "text-[0.9rem] md:text-[1.1rem]" : "text-base md:text-[1.2rem]"}`}
-                >
-                  <p>{explanation}</p>
+                <div className="flex items-center justify-center px-6 py-4 border-b 
+                border-yellow-200/30">
+                  <div className="flex items-center gap-3">
+                    <LuBrainCircuit className="text-3xl text-yellow-300" />
+                    <h2 className="text-2xl font-bold text-yellow-100">
+                      {t("main.explanation")}
+                    </h2>
+                  </div>
                 </div>
 
-                {/* Footer / Action */}
-                <div className="mt-6 flex justify-center">
+                {/* Question ID */}
+                <div className="flex justify-center mt-2">
+                  <span className="flex items-center gap-1 px-5 py-1 rounded-full 
+                  bg-gradient-to-r from-yellow-500/80 to-amber-600/80 
+                  text-xl font-bold text-yellow-100 shadow-md">
+                    <FaHashtag />
+                    {id}
+                  </span>
+                </div>
+
+                {/* Body */}
+                <div 
+                className={`flex-1 overflow-y-auto px-3 pt-5 md:px-6 text-sky-100 leading-relaxed 
+                ${i18n.language === "ka" 
+                ? "text-[1rem] md:text-[1.3rem]" 
+                : "text-[1.2rem] md:text-[1.4rem]"}`
+                }>
+                  {explanation}
+                </div>
+
+                {/* Footer */}
+                <div 
+                className="px-6 py-4 border-t border-yellow-200/30 flex justify-center">
                   <button
                   onClick={() => setShowExplanation(false)}
-                  className="px-8 py-3 bg-gradient-to-br from-yellow-300 to-yellow-400 
-                  text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer"
+                  className="px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 
+                  text-white font-semibold rounded-xl shadow-lg hover:text-yellow-200
+                  hover:scale-105 transition-all duration-200 cursor-pointer"
                   >
                     Close
                   </button>
@@ -827,7 +838,7 @@ function Javascript() {
                   border-2 border-amber-800 rounded-xl p-2 bg-gradient-to-r from-yellow-600/50 to-amber-500/50
                 text-yellow-200 
                   ${i18n.language === "ka" 
-                    ? "text-[0.85rem] md:text-[1.4rem]" 
+                    ? "text-[0.85rem] md:text-[1.3rem]" 
                     : "text-[0.9rem] md:text-[1.4rem]"}`}
                   >
                     {question}
@@ -1191,7 +1202,7 @@ function Javascript() {
                       <div className={`
                        ${i18n.language === "ka" 
                         ? "md:text-[1rem] lg:text-[1.2rem]" 
-                        : "md:text-[1.1rem] lg:text-[1.3rem] px-2"}`}>
+                        : "md:text-[1.1rem] lg:text-[1.3rem] px-5"}`}>
                         <span className="sm:hidden">
                           {button.text}
                         </span>
@@ -1214,12 +1225,12 @@ function Javascript() {
         className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-10
         backdrop-blur-md border border-yellow-500 rounded-2xl shadow-lg p-6
         my-[1rem] md:my-[5rem] md:min-h-[40rem]
-        bg-gradient-to-b from-yellow-400 to-yellow-600"
+        bg-gradient-to-b from-yellow-400 to-[#eba000]"
         >
           <h1
           className={`text-white py-3 px-5 rounded-xl hover:bg-yellow-700 transition
           flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-amber-500 shadow-lg
-          font-bold mb-7 md:mb-10
+          font-bold mb-7 md:mb-10 border
           ${i18n.language === "ka" 
             ? "text-[1.1rem] md:text-[1.5rem]" 
             : "text-[1.1rem] md:text-[1.7rem]"}`}
@@ -1328,13 +1339,13 @@ function Javascript() {
         id="jsVideo"
         className={`w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-10 
         backdrop-blur-md border border-yellow-500 rounded-2xl shadow-lg 
-        py-6 my-[1rem] bg-gradient-to-b from-yellow-400 to-yellow-600`}
+        py-6 my-[1rem] bg-gradient-to-b from-yellow-400 to-[#eba001]`}
         >
           {/* Section Header */}
           <h1
           className={`text-yellow-100 py-3 px-5 rounded-xl hover:bg-yellow-700 transition
           flex items-center shadow-lg bg-gradient-to-r from-yellow-500 to-amber-500
-          mb-1 md:mb-2 border-yellow-300 gap-2 font-bold lg:rounded-2xl
+          mb-1 md:mb-2 gap-2 font-bold lg:rounded-2xl border
           ${i18n.language === "ka" 
             ? "text-[1.1rem] md:text-[1.5rem]" 
             : "text-[1.1rem] md:text-[1.7rem]"}`}
@@ -1359,7 +1370,7 @@ function Javascript() {
 
           {/* Optional Caption / Credit */}
           <p 
-          className="mt-4 text-center text-yellow-700 text-sm md:text-base font-medium">
+          className="mt-4 text-center text-[#ffdf99] text-sm md:text-base font-medium">
             <Trans
             i18nKey={"main.videoCreator"}
             components={{

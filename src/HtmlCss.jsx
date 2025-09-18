@@ -358,50 +358,59 @@ function HtmlCss() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b 
-              from-sky-900/50 to-sky-900/50 backdrop-blur-sm rounded-2xl"
+              className="fixed inset-0 z-50 flex items-center justify-center 
+              bg-black/30 backdrop-blur-sm rounded-2xl"
               onClick={() => setShowExplanation(false)}
               >
                 <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 50, opacity: 0 }}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full h-full md:h-auto md:max-h-[80vh] max-w-4xl bg-gradient-to-br from-sky-800 via-cyan-800 to-cyan-700
-                border-2 border-cyan-400 rounded-3xl shadow-2xl p-6 md:p-10 flex flex-col overflow-y-auto"
+                className="relative w-full max-w-4xl h-[90%] max-h-[85vh] 
+                bg-gradient-to-br from-sky-900 via-cyan-900 to-sky-800
+                rounded-2xl shadow-2xl ring-1 ring-cyan-400/40 
+                flex flex-col overflow-hidden"
                 >
-                  {/* Neon Glow Effect */}
-                  <div className="absolute inset-0 rounded-3xl border-4 border-cyan-400 opacity-20 shadow-[0_0_50px_rgba(0,255,255,0.4)] pointer-events-none"></div>
-
-                  {/* Close Button */}
-                  <IoClose
-                  onClick={() => setShowExplanation(false)}
-                  className="absolute right-6 top-6 text-3xl text-cyan-200 hover:text-white hover:scale-110 transition-transform cursor-pointer z-20"
-                  />
-
                   {/* Header */}
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-cyan-100 mb-6 flex items-center justify-center gap-3 border-b border-cyan-300 pb-3">
-                    <LuBrainCircuit className="text-3xl md:text-4xl animate-pulse text-cyan-300" />
-                    {t("main.explanation")}
-                  </h2>
+                  <div className="flex items-center justify-center px-6 py-4 border-b border-cyan-400/30">
+                    <div className="flex items-center gap-3">
+                      <LuBrainCircuit className="text-3xl text-cyan-300" />
+                      <h2 className="text-2xl font-bold text-cyan-100">
+                        {t("main.explanation")}
+                      </h2>
+                    </div>
+                  </div>
+
+                  {/* Question ID */}
+                  <div className="flex justify-center mt-2">
+                    <span className="flex items-center gap-1 px-5 py-1 rounded-full 
+                    bg-gradient-to-r from-sky-500/80 to-cyan-600/80 
+                    text-xl font-bold text-white shadow-md">
+                      <FaHashtag />
+                      {id}
+                    </span>
+                  </div>
 
                   {/* Body */}
                   <div 
-                  className={`flex-1 text-sky-100 font-medium leading-relaxed
-                  ${i18n.language === "ka" ? "text-[0.9rem] md:text-[1.1rem]" : "text-base md:text-[1.2rem]"}`}>
-                    <p>
-                      {explanation}
-                    </p>
+                  className={`flex-1 overflow-y-auto px-3 pt-5 md:px-6 text-sky-100 leading-relaxed 
+                  ${i18n.language === "ka" 
+                  ? "text-[0.9rem] md:text-[1.3rem]" 
+                  : "text-[1rem] md:text-[1.4rem]"}`
+                  }>
+                    {explanation}
                   </div>
 
-                  {/* Footer / Action */}
-                  <div className="mt-6 flex justify-center">
+                  {/* Footer */}
+                  <div 
+                  className="px-6 py-4 border-t border-cyan-400/30 flex justify-center">
                     <button
                     onClick={() => setShowExplanation(false)}
-                    className="px-8 py-3 bg-gradient-to-r from-sky-500 to-sky-600 
-                    text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 
-                    transition-all duration-200 cursor-pointer"
+                    className="px-8 py-3 bg-gradient-to-r from-sky-500 to-cyan-600 
+                    text-white font-semibold rounded-xl shadow-lg hover:shadow-cyan-500/30 
+                    hover:scale-105 transition-all duration-200 cursor-pointer"
                     >
                       Close
                     </button>
@@ -714,7 +723,7 @@ function HtmlCss() {
                     border-2 border-sky-500 rounded-xl p-2 
                     bg-gradient-to-r from-sky-600/50 to-sky-700/50 text-sky-100
                     ${i18n.language === "ka" 
-                      ? "text-[0.85rem] md:text-[1.4rem]" 
+                      ? "text-[0.85rem] md:text-[1.3rem]" 
                       : "text-[0.9rem] md:text-[1.4rem]"}`}
                     >
                       {question}
@@ -1031,7 +1040,7 @@ function HtmlCss() {
                         className={`
                         ${i18n.language === "ka" 
                           ? "md:text-[1rem] lg:text-[1.2rem]" 
-                          : "md:text-[1.1rem] lg:text-[1.3rem]"}`}
+                          : "md:text-[1.1rem] lg:text-[1.3rem] px-5"}`}
                         >
                           <span 
                           className="sm:hidden">

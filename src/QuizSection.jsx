@@ -26,7 +26,7 @@ const themeStyles = {
     text: "text-amber-100", 
     border: "border-amber-600", 
     bg: "bg-gradient-to-br from-yellow-400 to-amber-500", 
-    bg2: " bg-gradient-to-b from-yellow-400 to-yellow-600", 
+    bg2: " bg-gradient-to-b from-yellow-400 to-[#eba000]", 
     icon: "text-yellow-100", 
   },
   react: {

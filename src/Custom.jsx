@@ -5,18 +5,16 @@ import Header from "./Header/Header.jsx";
 import QuizSection from "./QuizSection.jsx"
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { GiThink } from "react-icons/gi";
+import { GiThink, GiPartyPopper, GiPerspectiveDiceSixFacesRandom  } from "react-icons/gi";
 import { CiWarning, CiBoxList } from "react-icons/ci";
 import { FaTerminal, FaFacebookSquare, FaRocket, FaLeaf, FaCog,
   FaGamepad, FaListAlt } from "react-icons/fa";
 import { FaInstagram, FaThreads, FaTiktok, FaYoutube, FaAngleRight, 
 FaAngleLeft, FaAngleDown, FaHashtag } from "react-icons/fa6";
 import { PiHeartHalfFill, PiGraphFill } from "react-icons/pi";
-import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
-import { IoClose, IoPlaySkipForward, IoCaretUpOutline } from "react-icons/io5";
+import { IoPlaySkipForward, IoCaretUpOutline } from "react-icons/io5";
 import { BsPatchQuestionFill } from "react-icons/bs";
 import { LuPlus, LuBrainCircuit, LuBookOpenText } from "react-icons/lu";
-import { GiPartyPopper } from "react-icons/gi";
 import { useTranslation, Trans } from "react-i18next";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { FiHelpCircle, FiBookOpen, FiMail, FiInfo, FiClipboard } from 'react-icons/fi';
@@ -134,26 +132,19 @@ function Custom() {
   }, []);
 
   useEffect(() => {
-    if (userAnswers[questionIndex]) {
-      setShowAnswers(true);
-      setSelectedAnswer(userAnswers[questionIndex].selected ?? null);
-    }
-  }, [questionIndex]);
-
-  useEffect(() => {
     const saved = userAnswers[questionIndex];
 
-    if (saved && saved.selected !== null) {
+    if (saved) {
       setSelectedAnswer(saved.selected);
-      setShowAnswers(false);
+      setShowAnswers(true); // ✅ Always show red/green if answered
     } else {
       setSelectedAnswer(null);
       setShowAnswers(false);
     }
 
     setShowExplanation(false);
-  }, [questionIndex]);
-
+  }, [questionIndex, userAnswers]);
+  
   useEffect(() => {
     const savedData = localStorage.getItem("customProgress"); // ✅ Correct key
     if (savedData) {
@@ -201,16 +192,6 @@ function Custom() {
     }
   }, [message]);
   
-
-  function calculateMastery(finalScore) {
-    if (finalScore <= 5) return "Logic Learner";
-    if (finalScore <= 10) return "Critical Thinker";
-    if (finalScore <= 15) return "Problem Solver";
-    if (finalScore <= 20) return "Code Strategist";
-    if (finalScore >= 23) return "Logic Mastermind";
-    return "None";
-  }
-
   function handleSubmit() {
     // Don't allow empty answer
     if (!selectedAnswer) {
@@ -354,61 +335,70 @@ function Custom() {
         flex flex-col justify-between min-h-[37rem] md:min-h-[40rem]"
         >
           {showExplanation && (
-          <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-indigo-950/60 
-          to-black/40 backdrop-blur-sm rounded-2xl"
-          onClick={() => setShowExplanation(false)}
-          >
             <motion.div
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 40, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            onClick={(e) => e.stopPropagation()}
-            className="relative w-full h-full md:h-auto md:max-h-[80vh] max-w-4xl
-            bg-gradient-to-br from-indigo-950 via-indigo-900 to-indigo-950
-            border-2 border-indigo-400 rounded-3xl shadow-2xl p-6 md:p-10 flex flex-col overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center 
+            bg-black/30 backdrop-blur-sm rounded-2xl"
+            onClick={() => setShowExplanation(false)}
             >
-              {/* Glow Effect */}
-              <div className="absolute inset-0 rounded-3xl border-4 border-indigo-400 opacity-20 shadow-[0_0_50px_rgba(120,100,255,0.5)] pointer-events-none"></div>
-
-              {/* Close Button */}
-              <IoClose
-              onClick={() => setShowExplanation(false)}
-              className="absolute right-6 top-6 text-3xl text-indigo-300 hover:text-indigo-100 hover:scale-110 transition-transform cursor-pointer z-20"
-              />
-
-              {/* Title */}
-              <h2 className="text-3xl md:text-4xl font-extrabold text-indigo-200 mb-6 flex items-center justify-center gap-3 border-b border-indigo-400 pb-3">
-                <LuBrainCircuit className="text-3xl md:text-4xl animate-pulse text-indigo-300" />
-                {t("main.explanation")}
-              </h2>
-
-              {/* Body */}
-              <div
-              className={`flex-1 text-indigo-100 font-medium leading-relaxed
-              ${i18n.language === "ka" ? "text-[0.9rem] md:text-[1.1rem]" : "text-base md:text-[1.2rem]"}`}
+              <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl h-[90%] max-h-[85vh] 
+              bg-gradient-to-br from-indigo-950 via-indigo-900 to-indigo-950
+              rounded-2xl shadow-2xl ring-1 ring-indigo-200 
+              flex flex-col overflow-hidden"
               >
-                <p>
-                  {explanation}
-                </p>
-              </div>
+                {/* Header */}
+                <div className="flex items-center justify-center px-6 py-4 border-b 
+                border-[#784fff]">
+                  <div className="flex items-center gap-3">
+                    <LuBrainCircuit className="text-3xl text-indigo-300" />
+                    <h2 className="text-2xl font-bold text-indigo-200">
+                      {t("main.explanation")}
+                    </h2>
+                  </div>
+                </div>
 
-              {/* Footer */}
-              <div className="mt-6 flex justify-center">
-                <button
-                onClick={() => setShowExplanation(false)}
-                className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer"
-                >
-                  Close
-                </button>
-              </div>
+                {/* Question ID */}
+                <div className="flex justify-center mt-2">
+                  <span className="flex items-center gap-1 px-5 py-1 rounded-full 
+                  bg-gradient-to-r from-indigo-500/80 to-indigo-600/80 
+                  text-xl font-bold text-[#f1ebff] shadow-md">
+                    <FaHashtag />
+                    {id}
+                  </span>
+                </div>
+
+                {/* Body */}
+                <div 
+                className={`flex-1 overflow-y-auto px-3 pt-5 md:px-6 text-[#d3bdff] leading-relaxed 
+                ${i18n.language === "ka" 
+                ? "text-[1rem] md:text-[1.3rem]" 
+                : "text-[1.2rem] md:text-[1.4rem]"}`
+                }>
+                  {explanation}
+                </div>
+
+                <div 
+                className="px-6 py-4 border-t border-[#784fff] flex justify-center">
+                  <button
+                  onClick={() => setShowExplanation(false)}
+                  className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 
+                  text-white font-semibold rounded-xl shadow-lg hover:text-[#d3bdff]
+                  hover:scale-105 transition-all duration-200 cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
+          )}
 
           {menu && (
             <div className="fixed inset-0 z-30 bg-black/70 flex justify-center items-center 
@@ -701,7 +691,7 @@ function Custom() {
                   bg-gradient-to-r from-indigo-700/50 via-indigo-800/50 to-indigo-900/50
                   text-indigo-100
                   ${i18n.language === "ka" 
-                    ? "text-[0.85rem] md:text-[1.4rem]" 
+                    ? "text-[0.85rem] md:text-[1.2rem]" 
                     : "text-[0.9rem] md:text-[1.4rem]"}`}
                   >
                     {question}
@@ -846,9 +836,9 @@ function Custom() {
 
                 if (showAnswers) {
                   if (isCorrect) {
-                    style += "bg-green-600 text-white border-green-700";
+                    style += "bg-gradient-to-b from-[#00cae0] to-[#089e7b] text-green-50 border-green-300";
                   } else if (isSelected) {
-                    style += "bg-red-600 text-white border-red-700";
+                    style += "bg-gradient-to-b from-[#fa008a] to-[#c4002b] text-rose-100 border-rose-300";
                   } else {
                     style += "bg-white/10 text-white border-indigo-500";
                   }
@@ -926,12 +916,18 @@ function Custom() {
                   showMode: "icon",
                   click: () => {
                     if (questionIndex > 0) {
-                      setQuestionIndex((prev) => prev - 1);
-                      setSelectedAnswer("");
-                      setShowExplanation(false);
-                      setMessage("");
+                      const prevIndex = questionIndex - 1;
+
+                      setQuestionIndex(prevIndex);
+
+                      // Restore selected answer if it exists
+                      const prevAnswer = userAnswers[prevIndex]?.selected || "";
+                      setSelectedAnswer(prevAnswer);
+
+                      // Show answers if user already answered this question
+                      setShowAnswers(!!userAnswers[prevIndex]);
                     }
-                  },
+                  }
                 },
                 {
                   id: 2,
@@ -1049,7 +1045,9 @@ function Custom() {
                     {/* Submit / Skip (text-only mobile, full desktop) */}
                     {button.showMode === "text" && (
                       <div className={`
-                       ${i18n.language === "ka" ? "md:text-[1rem] lg:text-[1.2rem]" : "md:text-[1.1rem] lg:text-[1.3rem]"}`}>
+                       ${i18n.language === "ka" 
+                       ? "md:text-[1rem] lg:text-[1.2rem]" 
+                       : "md:text-[1.1rem] lg:text-[1.3rem] px-5"}`}>
                         <span className="sm:hidden">
                           {button.text}
                         </span>

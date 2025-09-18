@@ -20,7 +20,7 @@ export const reactQuestions = [
 ];
 
 export const customQuestions = [
-  ...Array.from({ length: 115 }, (_, i) => ({
+  ...Array.from({ length: 130 }, (_, i) => ({
     id: i + 1,
     type: "custom"
   }))

@@ -840,7 +840,7 @@
       "options": ["Tailwind is used inline", "Tailwind has no limitations", "Tailwind uses utility classes", "Tailwind supports all animations"],
       "level": "<medium>medium</medium>",
       "correct": "Tailwind uses utility classes",
-      "explanation": "Tailwind uses utility-first class names instead of writing custom CSS rules."
+      "explanation": "Unlike regular CSS where you write custom styles for each class or element, Tailwind provides pre-built utility classes for common CSS properties like margin, padding, colors, and fonts. Instead of writing new CSS rules, you combine these small classes directly in your HTML to style elements quickly and consistently. This approach is called 'utility-first' and helps reduce the need to switch between HTML and CSS files."
     },
     "66": {
       "question": "Which position value keeps an element fixed during scroll?",
@@ -1113,9 +1113,9 @@
       "question": "Why do developers often prefer CSS Grid for complex layouts instead of only using Flexbox?",
       "options": [
         "Because Grid can arrange elements in both rows and columns at the same time",
-        "Because Grid automatically writes HTML for you",
-        "Because Grid is faster to load than Flexbox",
-        "Because Grid works without CSS"
+        "Because Grid can automatically arrange elements correctly on the x-axis.",
+        "Because Grid can automatically arrange elements correctly on the horizontal axis.",
+        "Because Grid it's faster and easier to use."
       ],
       "level": "<hard>hard</hard>",
       "correct": "Because Grid can arrange elements in both rows and columns at the same time",
@@ -4140,9 +4140,9 @@
     "18": {
       "question": "What will happen if you forget the dependency array in `useEffect`?",
       "options": [
-        "It will never run",
+        "It will never run and work properly",
         "It will run after every render",
-        "It will throw an error",
+        "It will throw an error, in our console",
         "It will run only on mount"
       ],
       "level": "<easy>easy</easy>",
@@ -4810,16 +4810,16 @@
       "explanation": "Custom hooks must start with 'use' so React can apply its rules of hooks properly."
     },
     "74": {
-      "question": "Which of the following is a good example of a custom hook?",
+      "question": "Consider the code: const [count, setCount] = useState(0); What happens if you call setCount(count + 1) directly inside the component body (render) without a condition?",
       "options": [
-        "useFetch to handle API requests",
-        "useStyles to apply CSS",
-        "useDOM to create elements manually",
-        "useIfElse for conditionals"
+        "It updates the state normally without issues",
+        "It causes an infinite re-render loop",
+        "It throws a compile-time error",
+        "React ignores the state update"
       ],
       "level": "<hard>hard</hard>",
-      "correct": "useFetch to handle API requests",
-      "explanation": "Custom hooks like useFetch encapsulate reusable logic, such as fetching data from an API."
+      "correct": "It causes an infinite re-render loop",
+      "explanation": "Calling a state setter (like setState) directly during render will trigger a state change immediately, which causes the component to re-render again. Without a condition to prevent repeated calls, this creates an infinite render loop, often freezing the UI. Proper usage is to call state setters in event handlers, useEffect, or conditional logic, not directly in the main render."
     },
     "75": {
       "question": "JSX stands for JavaScript XML, but what does that actually mean in React?",
@@ -4880,6 +4880,18 @@
       "level": "<hard>hard</hard>",
       "correct": "JSX",
       "explanation": "JSX was inspired by Facebook's PHP library XHP, which allowed mixing XML-like syntax with PHP code."
+    },
+    "80": {
+      "question": "We use JSON files to store translations, but where do we usually keep the collection of language files?",
+      "options": [
+        "In the assets folder",
+        "In the locale folder",
+        "In the public folder",
+        "Outside the project files"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "In the locale folder",
+      "explanation": "When building a website with multi-language support, each language's JSON file is typically stored in a 'locale' folder to organize translations efficiently."
     }
   },
   "custom": {
@@ -4960,7 +4972,7 @@
       "options": [
         "bg-gradient-to-r from-red-500/50 to-blue-500/50",
         "bg-mix-red-blue",
-        "bg-opacity-50",
+        "bg-mix-red-blue from-red/50 to-blue/50",
         "bg-blend-multiply"
       ],
       "level": "<easy>easy</easy>",
@@ -5688,12 +5700,12 @@
       "explanation": "It refers to the very first section of a webpage, usually containing the main heading, call to action, or introductory content."
     },
     "68": {
-      "question": "In JavaScript, what is the optional chaining operator (`?.`)?",
+      "question": "In JavaScript, what exactly the optional chaining operator(`?.`) do?",
       "options": [
         "It safely accesses nested object properties without throwing an error if the value is undefined or null.",
-        "It performs arithmetic operations.",
-        "It conditionally calls a function.",
-        "It creates a loop."
+        "In Javascript, we don't have optional chaining operator, it will throw an error.",
+        "It checks if we have constant(const) variable in the function.",
+        "It depines if the component exist, if so it throws an error."
       ],
       "level": "<hard>hard</hard>",
       "correct": "It safely accesses nested object properties without throwing an error if the value is undefined or null.",
@@ -6204,7 +6216,7 @@
       "explanation": "The <svg> tag defines a container for SVG graphics, which are vector-based and can scale without losing quality."
     },
     "111": {
-      "question": "Where is using SVG especially beneficial compared to regular images?",
+      "question": "In web programming, what are SVGs most commonly used for?",
       "options": [
         "For large background photos",
         "For logos, icons, and simple illustrations that need to scale",
@@ -6213,7 +6225,7 @@
       ],
       "level": "<medium>medium</medium>",
       "correct": "For logos, icons, and simple illustrations that need to scale",
-      "explanation": "SVGs are vector-based, so they scale perfectly at any resolution, making them ideal for logos, icons, and simple illustrations."
+      "explanation": "SVGs are vector graphics, meaning they can scale infinitely without losing quality. That’s why they’re ideal for logos, icons, and simple illustrations."
     },
     "112": {
       "question": "Can you create a unique icon using just an <svg> tag?",
@@ -6334,6 +6346,114 @@
       "level": "<hard>hard</hard>",
       "correct": "'121212'",
       "explanation": "'12' + 12 turns into string concatenation → '1212'. Then adding `[12]` calls `toString()` on the array, giving '12'. Final result is \"121212\"."
+    },
+    "122": {
+      "question": "What will be the output of: console.log(true + [] + false);",
+      "options": [
+        "'1false'",
+        "'truefalse'",
+        "NaN",
+        "'true0'"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "'1false'",
+      "explanation": "true converts to 1, [] converts to '', 1 + '' → '1', then '1' + false → '1false'."
+    },
+    "123": {
+      "question": "What will be logged by: console.log([1,2] == '1,2');",
+      "options": [
+        "true",
+        "false",
+        "TypeError",
+        "undefined"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "true",
+      "explanation": "The array [1,2] is converted to string '1,2', so '1,2' == '1,2' → true."
+    },
+    "124": {
+      "question": "What will this output: console.log([] + false - null + true);",
+      "options": [
+        "NaN",
+        "true",
+        "false",
+        "0"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "NaN",
+      "explanation": "[] converts to '', so '' + false → 'false'. Then 'false' - null → NaN (string minus number). NaN + true → still NaN."
+    },
+    "125": {
+      "question": "What will be the output: console.log(!+[] + !+[]);",
+      "options": [
+        "2",
+        "true",
+        "false",
+        "1"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "2",
+      "explanation": "+[] converts [] to 0, !0 → true, true + true → 1 + 1 → 2."
+    },
+    "126": {
+      "question": "What will be the output of: console.log([] + {} * []);",
+      "options": [
+        "NaN",
+        "'[object Object]'",
+        "'[object Object]0'",
+        "0"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "NaN",
+      "explanation": "({} * []) → NaN because {} converts to NaN in numeric context, [] converts to 0. Then ([] + NaN) → '', ('' + NaN) → 'NaN'."
+    },
+    "127": {
+      "question": "What will this output: console.log({} * 2 + []);",
+      "options": [
+        "NaN",
+        "'NaN'",
+        "0",
+        "'0'"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "NaN",
+      "explanation": "{} is converted to NaN in arithmetic context, so (NaN * 2) → NaN. Adding [] converts [] → '', but (NaN + '') → NaN."
+    },
+    "128": {
+      "question": "What is the result of: console.log('5' - '2' * '2');",
+      "options": [
+        "1",
+        "6",
+        "NaN",
+        "'1'"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "1",
+      "explanation": "('2' * '2') → 4 (math converts strings to numbers). Then ('5' - 4) → 1. Subtraction converts strings to numbers automatically."
+    },
+    "129": {
+      "question": "What will this log: console.log([3] % 2 + true);",
+      "options": [
+        "2",
+        "1",
+        "0",
+        "NaN"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "2",
+      "explanation": "([3] % 2) → 1 (array converts to number 3). Then (1 + true) → 1, (1 + 1) → 2."
+    },
+    "130": {
+      "question": "What is the output of: console.log([] * 2 + false / []);",
+      "options": [
+        "NaN",
+        "0",
+        "'NaN'",
+        "false"
+      ],
+      "level": "<hard>hard</hard>",
+      "correct": "NaN",
+      "explanation": "[] converts to 0 in arithmetic, so ([] * 2) → 0. Then false / [] → 0 / 0 → NaN. Finally, 0 + NaN → NaN."
     }
   },
   "lastSec": {
