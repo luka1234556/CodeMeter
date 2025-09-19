@@ -66,6 +66,7 @@ function Header({ showBackButton = true , theme = "main", useGradient = true }) 
     ${headerBg} ${colors.border} ${colors.primary}
     sticky top-0 px-3 flex justify-between items-center backdrop-blur-3xl z-20`}>
       {/* Left side */}
+      
       <div className="flex items-center justify-between gap-3">
         {showBackButton && (
           <button
