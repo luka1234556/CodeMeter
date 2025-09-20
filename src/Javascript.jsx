@@ -297,7 +297,7 @@ function Javascript() {
   return (
     <div 
     className="min-h-screen flex flex-col relative from-yellow-500/70 to-amber-400
-    bg-gradient-to-b md:from-yellow-500/90 md:to-amber-500/90">
+    bg-gradient-to-b md:from-yellow-500/90 md:to-amber-500/90 js">
       
       <Header showBackButton={true} theme="javascript" />
 
@@ -434,15 +434,15 @@ function Javascript() {
       role="main"
       aria-label="javascript logic quiz"
       className="flex flex-col items-center w-full sm:max-w-full max-w-screen-md 
-      mx-auto sm:px-6 gap-8 mt-2 mb-10 js">
+      mx-auto sm:px-6 gap-8 mt-2 mb-10">
         
         <div 
         className="flex items-center flex-col z-1">
           <h1 
           className={`md:text-5xl font-extrabold text-center mt-5 flex items-center 
           gap-1 group text-transparent bg-clip-text bg-gradient-to-b pb-2 
-          md:from-yellow-300 md:to-amber-300 text-[2rem]
-          from-yellow-500 to-amber-600`}>
+          text-[2rem] from-yellow-500 to-amber-600
+          md:from-yellow-700 md:to-amber-500`}>
             {t("main.header3")}
             <TbBrandJavascript 
             className="md:text-6xl text-4xl mt-1 md:text-amber-200 text-amber-500" />
@@ -467,7 +467,7 @@ function Javascript() {
         backdrop-blur-md border border-yellow-500 rounded-2xl 
         shadow-lg py-4 md:py-10 lg:py-12 md:max-h-[43rem] lg:max-h-[40rem]
         flex flex-col justify-between min-h-[37rem] md:min-h-[40rem]
-        bg-gradient-to-b from-yellow-400 to-[#eba000]"
+        bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600"
         >
           {showExplanation && (
             <motion.div
@@ -485,7 +485,7 @@ function Javascript() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-4xl h-[90%] max-h-[85vh] 
-              bg-gradient-to-br from-[#db9302] via-[#b37802] to-yellow-700
+              bg-gradient-to-br from-amber-700 via-amber-800 to-yellow-900
               rounded-2xl shadow-2xl ring-1 ring-amber-200 
               flex flex-col overflow-hidden"
               >
@@ -512,7 +512,7 @@ function Javascript() {
 
                 {/* Body */}
                 <div 
-                className={`flex-1 overflow-y-auto px-3 pt-5 md:px-6 text-sky-100 leading-relaxed 
+                className={`flex-1 overflow-y-auto px-3 pt-5 md:px-6 text-yellow-50 leading-relaxed 
                 ${i18n.language === "ka" 
                 ? "text-[1rem] md:text-[1.3rem]" 
                 : "text-[1.2rem] md:text-[1.4rem]"}`
@@ -835,8 +835,8 @@ function Javascript() {
 
                   <p
                   className={`font-medium md:max-w-[52rem] w-auto mt-[12px] md:w-full
-                  border-2 border-amber-800 rounded-xl p-2 bg-gradient-to-r from-yellow-600/50 to-amber-500/50
-                text-yellow-200 
+                  rounded-xl p-2 bg-gradient-to-r from-amber-700/40 to-amber-600/40 border 
+                  border-amber-00 text-amber-100
                   ${i18n.language === "ka" 
                     ? "text-[0.85rem] md:text-[1.3rem]" 
                     : "text-[0.9rem] md:text-[1.4rem]"}`}
@@ -1225,7 +1225,7 @@ function Javascript() {
         className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-10
         backdrop-blur-md border border-yellow-500 rounded-2xl shadow-lg p-6
         my-[1rem] md:my-[5rem] md:min-h-[40rem]
-        bg-gradient-to-b from-yellow-400 to-[#eba000]"
+        bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600"
         >
           <h1
           className={`text-white py-3 px-5 rounded-xl hover:bg-yellow-700 transition
@@ -1242,7 +1242,7 @@ function Javascript() {
 
           <ul
           className="grid grid-cols-3 md:grid-cols-4 gap-3 
-          mt-5 overflow-y-auto max-h-[29rem] bg-gradient-to-b from-yellow-200 to-yellow-300
+          mt-5 overflow-y-auto max-h-[29rem]
           p-2 pr-3 relative"
           >
             {jsQuestions.map((q) => (
@@ -1252,10 +1252,10 @@ function Javascript() {
                 setSelectedQuestion(q);
               }}
               className="bg-gradient-to-br from-yellow-500 to-amber-600 
-              text-yellow-300 rounded-lg py-[12px] flex items-center gap-2 justify-center 
+              text-yellow-100 rounded-lg py-[12px] flex items-center gap-2 justify-center 
               hover:scale-105 hover:shadow-md transition-all duration-200 
-              cursor-pointer border border-amber-600 hover:border-amber-100 shadow-inner 
-              hover:text-yellow-100"
+              cursor-pointer border border-amber-200 hover:border-amber-100 shadow-inner 
+              hover:text-yellow-50"
               key={q.id}
               >
                 <FaHashtag className="text-base opacity-80 md:text-xl" />
@@ -1339,7 +1339,7 @@ function Javascript() {
         id="jsVideo"
         className={`w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-10 
         backdrop-blur-md border border-yellow-500 rounded-2xl shadow-lg 
-        py-6 my-[1rem] bg-gradient-to-b from-yellow-400 to-[#eba001]`}
+        py-6 my-[1rem] bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600`}
         >
           {/* Section Header */}
           <h1
@@ -1374,7 +1374,7 @@ function Javascript() {
             <Trans
             i18nKey={"main.videoCreator"}
             components={{
-              highlight: <span className="text-transparent bg-clip-text bg-gradient-to-b from-red-600 to-red-400 font-semibold"/>
+              highlight: <span className="text-orange-700 font-semibold"/>,
             }}
             />
           </p>

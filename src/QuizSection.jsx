@@ -26,8 +26,11 @@ const themeStyles = {
     text: "text-amber-100", 
     border: "border-amber-600", 
     bg: "bg-gradient-to-br from-yellow-400 to-amber-500", 
-    bg2: " bg-gradient-to-b from-yellow-400 to-[#eba000]", 
-    icon: "text-yellow-100", 
+    bg2: "bg-gradient-to-b from-amber-400 via-amber-500 to-amber-700", 
+    icon: "text-yellow-100",
+    // 🔥 New highlight system
+    highlight: "text-orange-600 font-semibold",   // instead of cyan
+    accent: "text-red-600 font-semibold",         // for fire/hard levels
   },
   react: {
     id: "reactGuide",
@@ -53,7 +56,7 @@ const themeStyles = {
 
 const QuizSection = ({ theme = "html" }) => {
   const { t, i18n } = useTranslation();
-  const { id, heading, headingBg, text, border, bg, bg2, icon } = themeStyles[theme] || themeStyles.html;
+  const { id, heading, headingBg, text, border, bg, bg2, icon, accent, highlight } = themeStyles[theme] || themeStyles.html;
 
   return (
     <motion.section
@@ -77,8 +80,7 @@ const QuizSection = ({ theme = "html" }) => {
           <h1
           className={`flex items-center gap-3 ${text} font-extrabold 
           px-4 py-3 mb-4 rounded-2xl shadow-inner border
-          bg-gradient-to-r ${headingBg}
-          text-[1.4rem] md:text-[1.8rem] tracking-wide`}
+          bg-gradient-to-r ${headingBg} text-[1.4rem] md:text-[1.8rem] tracking-wide`}
           >
             <span className={`p-2 rounded-full ${bg} ${border}`}>
               <LuBrainCircuit className={`text-2xl ${icon}`} />
@@ -141,7 +143,7 @@ const QuizSection = ({ theme = "html" }) => {
 
                     {
                       id:3, icon: <AiFillFire/>, level: `${t("Guide.leveling.hard")}`,
-                      p: `${t("Guide.leveling.hardP")}`, iconText: "text-rose-200",
+                      p: `${t("Guide.leveling.hardP")}`, iconText: accent || "text-rose-300",
                       iconStyle: "bg-red-600 p-1 rounded-full border-2 border-red-100"}
                   ].map((levels) => (
                     <li
@@ -209,7 +211,7 @@ const QuizSection = ({ theme = "html" }) => {
                   <Trans
                   i18nKey="Guide.questions.explanation"
                   components={{
-                    highLight: <span className="text-cyan-400 font-bold underline" />,
+                    highLight: <span className={`${highlight || "text-cyan-400"} font-bold underline`} />,
                   }}
                   />
                 </p>
@@ -254,7 +256,7 @@ const QuizSection = ({ theme = "html" }) => {
                   <Trans
                     i18nKey="Guide.stats.explanation"
                     components={{
-                      radial: <span className="text-cyan-300 font-bold" />,
+                      radial: <span className={`${highlight || "text-cyan-400"} font-bold`} />,
                       rank1: <span className="text-amber-700 font-bold"/>,
                       rank2: <span className="text-yellow-400 font-bold"/>
                     }}
@@ -299,7 +301,7 @@ const QuizSection = ({ theme = "html" }) => {
                   i18nKey="Guide.mastery.explanation"
                   components={{
                     highLight: (
-                      <span className="text-cyan-300 font-semibold" />
+                      <span className={`${highlight || "text-cyan-400"} font-semibold `} />
                     ),
                     radial: (
                       <span className="text-transparent bg-clip-text bg-gradient-to-b from-yellow-100 to-yellow-300 font-bold" />
@@ -356,7 +358,7 @@ const QuizSection = ({ theme = "html" }) => {
                       <Trans 
                       i18nKey={`${rules.exp}`}
                       components={{
-                        highLight: <span className="text-cyan-300 font-semibold" />,
+                        highLight: <span className={`${highlight || "text-cyan-400"} font-semibold`} />,
                       }}
                       /> 
                     </li>
